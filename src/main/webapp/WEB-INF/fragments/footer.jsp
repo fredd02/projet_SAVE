@@ -10,6 +10,8 @@
 
 
 <s:url value="/resources/js/bootstrap.min.js" var="BootstrapJs" />
+<s:url value="/resources/js/monApplication.js" var="MyAppJs" />
 
 <script src="${BootstrapJs}"></script>
+<script src="${MyAppJs}"></script>
 </body>

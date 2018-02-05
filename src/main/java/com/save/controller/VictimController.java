@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,8 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.save.model.Victim;
 import com.save.repository.IVictimRepository;
+import com.save.web.NoAccessException;
+import com.save.web.NotFoundException;
+
+
 
 @Controller
 @RequestMapping("/victim")
@@ -93,6 +99,27 @@ public class VictimController {
 		
 		
 		return "victim/victim";
+	}
+	
+	
+	//methode POST pour supprimer une victime
+	
+	@RequestMapping(value="/{id}/delete", method=RequestMethod.POST)
+	public String deleteVictim(@PathVariable Long id) {
+		log.info("methode POST pour supprimer une victime");
+		//verifie si la victime existe
+		if(!victimDAO.exists(id)) 
+			throw new NotFoundException("victime non trouvée pour suppression ",id);
+		try {
+			victimDAO.delete(id);
+		} catch (DataIntegrityViolationException e) {
+			log.error("SQL", e);
+			throw new NoAccessException(" Suppression impossible: cette victime possède des dépendances");
+			
+		}
+		log.info("suppression de la victime: " + id);
+		return "redirect:/victim/list";
+		
 	}
 
 

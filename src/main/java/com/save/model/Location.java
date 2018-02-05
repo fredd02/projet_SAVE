@@ -17,7 +17,7 @@ public class Location {
 	private Integer postCode;
 	
 	@Column
-	private String City;
+	private String city;
 	
 	@Column
 	private Double latitude;
@@ -38,7 +38,7 @@ public class Location {
 	public Location(Integer postCode, String city, Double latitude, Double longitude) {
 		super();
 		this.postCode = postCode;
-		City = city;
+		city = city;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -49,7 +49,7 @@ public class Location {
 	public Location(Integer postCode, String city) {
 		super();
 		this.postCode = postCode;
-		City = city;
+		city = city;
 	}
 
 
@@ -84,14 +84,14 @@ public class Location {
 
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 
 
 
 	public void setCity(String city) {
-		City = city;
+		city = city;
 	}
 
 

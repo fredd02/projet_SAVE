@@ -23,6 +23,12 @@
   <li class="list-group-item"><b>sexe: </b><c:out value="${victim.sex == 0 ? 'masculin' : 'feminin'}" /></li>
 </ul>
 
+ <div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="location.href='#'">ajouter un responsable</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='../location/add'">ajouter une localisation</button>
+  
+</div> 
+
 </div>
 
 <jsp:include page="../fragments/footer.jsp" />

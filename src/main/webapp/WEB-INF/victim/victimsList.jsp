@@ -26,6 +26,7 @@
 		<th>Accident date</th>
 		<th>Sex</th>
 		<th></th>
+		<th></th>
 		</tr>
 </thead>
 <tbody>
@@ -41,7 +42,23 @@
 				<c:otherwise>F</c:otherwise>
 				
 			</c:choose></td>
-			<td><a href="${victim.id}" >infos</a></td>
+			
+			<td><s:url value="/victim/${victim.id}" var="infoUrl" />
+			<button class="btn btn-primary" 
+				onclick="location.href='${infoUrl}'">Infos</button>
+			</td>
+			<td>
+			<s:url value="/victim/${victim.id}/delete" var="deleteUrl" />
+			<button class="btn btn-danger"
+				onclick="
+				if (confirm('Suppression de la victime  ?')) {
+				 this.disabled=true;
+                 post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
+                                              ">Delete</button>
+			
+			
+			
+			</td>
 		</tr>
 	</c:forEach>
 </tbody>
