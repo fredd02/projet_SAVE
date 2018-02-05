@@ -25,7 +25,7 @@
 
  <div class="btn-group">
   <button type="button" class="btn btn-primary" onclick="location.href='#'">ajouter un responsable</button>
-  <button type="button" class="btn btn-primary" onclick="location.href='../location/add'">ajouter une localisation</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='../location/${victim.id}/add'">ajouter une localisation</button>
   
 </div> 
 

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -46,6 +48,10 @@ public class Victim {
 	@Max(value=1)
 	@Column
 	private Integer sex;
+	
+	@ManyToOne
+	@JoinColumn(name="FKLocation")
+	private Location location;
 
 	public Victim() {
 		
@@ -107,6 +113,16 @@ public class Victim {
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	
+	
 	
 	
 

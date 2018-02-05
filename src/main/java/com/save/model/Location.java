@@ -11,7 +11,7 @@ public class Location {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int Long;
+	private Long id;
 	
 	@Column
 	private Integer postCode;
@@ -19,6 +19,40 @@ public class Location {
 	@Column
 	private String city;
 	
+	@Column
+	private String street;
+	
+	@Column
+	private Integer number;
+	
+	public String getStreet() {
+		return street;
+	}
+
+
+
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+
+
+
+	public Integer getNumber() {
+		return number;
+	}
+
+
+
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+
+
+
 	@Column
 	private Double latitude;
 	
@@ -35,10 +69,12 @@ public class Location {
 
 
 
-	public Location(Integer postCode, String city, Double latitude, Double longitude) {
+	public Location(Integer postCode, String city, String street, Integer number, Double latitude, Double longitude) {
 		super();
 		this.postCode = postCode;
-		city = city;
+		this.city = city;
+		this.street = street;
+		this.number = number;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -49,21 +85,21 @@ public class Location {
 	public Location(Integer postCode, String city) {
 		super();
 		this.postCode = postCode;
-		city = city;
+		this.city = city;
 	}
 
 
 
 
-	public int getLong() {
-		return Long;
+	public Long getId() {
+		return id;
 	}
 
 
 
 
-	public void setLong(int l) {
-		Long = l;
+	public void setId(Long l) {
+		id = l;
 	}
 
 
@@ -91,7 +127,7 @@ public class Location {
 
 
 	public void setCity(String city) {
-		city = city;
+		this.city = city;
 	}
 
 

@@ -60,6 +60,9 @@ public class VictimController {
 		return "victim/addVictim";
 	}
 	
+	
+	//methode POST pour encoder une victime
+	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public String victimAddPost(@Valid Victim victim, BindingResult errors, Model model, RedirectAttributes rModel) {
 		
@@ -89,7 +92,7 @@ public class VictimController {
 		
 		//verifie si on ne vient pas d'une redirection
 		if(! model.containsAttribute("victim")) {
-			log.debug("recherche de la victime dans la BD");
+			log.info("recherche de la victime dans la BD");
 			Victim victim = victimDAO.findOne(id);
 			
 			model.addAttribute("victim", victim);

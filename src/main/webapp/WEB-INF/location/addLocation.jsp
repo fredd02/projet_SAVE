@@ -12,11 +12,16 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Ajouter une localisation</h1>
+<h1>Ajouter une localisation à la victime <c:out value="${victim.id}" /></h1>
+<h4><c:out value="${victim.firstname} ${victim.lastname}" /></h4>
+<br>
+
 
 <sf:form method="POST" class="form-horizontal" modelAttribute="location" action="add">
 
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
+	
+	
 	
 	<s:bind path="postCode">
 		<div class="form-group ${status.error ? has-error : ''}">
@@ -34,6 +39,26 @@
 			<div class="col-sm-10">
 				<sf:input path="city" id="city" class="form-control" placeholder="city" />
 				<sf:errors path="city" class="control-label" />
+			</div>
+			</div>
+	</s:bind>
+	
+	<s:bind path="street">
+		<div class="form-group ${status.error ? has-error : ''}">
+			<sf:label path="street" class="col-sm-2 control-label">street</sf:label>
+			<div class="col-sm-10">
+				<sf:input path="street" id="street" class="form-control" placeholder="street" />
+				<sf:errors path="street" class="control-label" />
+			</div>
+			</div>
+	</s:bind>
+	
+	<s:bind path="number">
+		<div class="form-group ${status.error ? has-error : ''}">
+			<sf:label path="number" class="col-sm-2 control-label">number</sf:label>
+			<div class="col-sm-10">
+				<sf:input path="number" id="city" class="form-control" placeholder="number" />
+				<sf:errors path="number" class="control-label" />
 			</div>
 			</div>
 	</s:bind>

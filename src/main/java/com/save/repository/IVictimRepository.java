@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.save.model.Victim;
 
-public interface IVictimRepository extends CrudRepository<Victim, Long>{
+public interface IVictimRepository extends JpaRepository<Victim, Long>{
 	
 	@Query(value="SELECT * FROM victim v ORDER BY v.firstname", nativeQuery=true)
 	List<Victim> getVictimsListAlpha();
