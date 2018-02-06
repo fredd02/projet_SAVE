@@ -57,7 +57,7 @@
 		<div class="form-group ${status.error ? has-error : ''}">
 			<sf:label path="number" class="col-sm-2 control-label">number</sf:label>
 			<div class="col-sm-10">
-				<sf:input path="number" id="city" class="form-control" placeholder="number" />
+				<sf:input path="number" id="number" class="form-control" placeholder="number" />
 				<sf:errors path="number" class="control-label" />
 			</div>
 			</div>
@@ -65,9 +65,9 @@
 	
 	<s:bind path="latitude">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="latitude" class="col-sm-2 control-label">city</sf:label>
+			<sf:label path="latitude" class="col-sm-2 control-label">latitude</sf:label>
 			<div class="col-sm-10">
-				<sf:input path="latitude" id="city" class="form-control" placeholder="latitude" />
+				<sf:input path="latitude" id="latitude" class="form-control" placeholder="latitude" />
 				<sf:errors path="latitude" class="control-label" />
 			</div>
 		</div>

@@ -61,6 +61,9 @@ public class LocationController {
 			
 			Location location_saved = locationDAO.save(location);
 			log.info("code postal: " + location_saved.getPostCode());
+			Victim victim = victimDAO.findOne(id);
+			victim.setLocation(location_saved);
+			victimDAO.save(victim);
 			
 			rModel.addFlashAttribute(location_saved);
 			
@@ -71,7 +74,12 @@ public class LocationController {
 	
 	//methode GET pour afficher les détails d'une localisation
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
-	public String infosLocation() {
+	public String infosLocation(@PathVariable Long id, Model model) {
+		
+		if(!model.containsAttribute("location")) {
+			Location location = locationDAO.findOne(id);
+			model.addAttribute("location", location);
+		}
 		
 		return "location/location";
 	}

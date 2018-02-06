@@ -25,6 +25,7 @@
 		<th>Birth date</th>
 		<th>Accident date</th>
 		<th>Sex</th>
+		<th>Location</th>
 		<th></th>
 		<th></th>
 		</tr>
@@ -42,6 +43,11 @@
 				<c:otherwise>F</c:otherwise>
 				
 			</c:choose></td>
+			<td>
+				<c:if test="${!empty victim.location}">
+					<span class="glyphicon glyphicon-ok"></span>
+				</c:if>
+			</td>
 			
 			<td><s:url value="/victim/${victim.id}" var="infoUrl" />
 			<button class="btn btn-primary" 
