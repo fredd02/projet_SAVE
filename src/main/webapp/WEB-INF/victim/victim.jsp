@@ -24,7 +24,14 @@
 </ul>
 
  <div class="btn-group">
-   <button type="button" class="btn btn-primary" onclick="location.href='#'">ajouter un responsable</button>
+   <c:choose>
+   	   <c:when test="${empty victim.responsibles}">
+ 		<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${victim.id}/add'">ajouter un responsable</button>
+ 	   </c:when>
+ 	   <c:otherwise>
+ 	   		<button type="button" class="btn btn-info" onclick="location.href='../responsible/list/${victim.id}'">voir les responsables</button>
+ 	   </c:otherwise>
+ 	</c:choose>
    <c:choose>
    	   <c:when test="${empty victim.location}">
  		<button type="button" class="btn btn-primary" onclick="location.href='../location/${victim.id}/add'">ajouter une localisation</button>

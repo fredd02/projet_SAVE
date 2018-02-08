@@ -1,6 +1,8 @@
 package com.save.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -52,6 +56,11 @@ public class Victim {
 	@ManyToOne
 	@JoinColumn(name="FKLocation")
 	private Location location;
+	
+	@ManyToMany
+	@JoinTable(name="victimeResponsible", joinColumns= @JoinColumn(name="FKVictim"),
+			inverseJoinColumns= @JoinColumn(name="FKResponsible"))
+	private  Set<Responsible> responsibles = new HashSet<Responsible>();
 
 	public Victim() {
 		
@@ -120,6 +129,20 @@ public class Victim {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	
+	
+	
+	public Set<Responsible> getResponsibles() {
+		return responsibles;
+	}
+
+	public void setResponsibles(Set<Responsible> responsibles) {
+		this.responsibles = responsibles;
+	}
+
+	public void addResponsible(Responsible responsible) {
+		responsibles.add(responsible);
 	}
 	
 	

@@ -26,6 +26,7 @@
 		<th>Accident date</th>
 		<th>Sex</th>
 		<th>Location</th>
+		<th>Responsible</th>
 		<th></th>
 		<th></th>
 		</tr>
@@ -45,6 +46,12 @@
 			</c:choose></td>
 			<td>
 				<c:if test="${!empty victim.location}">
+					<span class="glyphicon glyphicon-ok"></span>
+				</c:if>
+			</td>
+				
+			<td>
+				<c:if test="${!empty victim.responsibles}">
 					<span class="glyphicon glyphicon-ok"></span>
 				</c:if>
 			</td>
