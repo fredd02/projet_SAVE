@@ -30,8 +30,8 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="<s:url value="/"/>">Home</a></li>
-				<li><a href="/SAVE-02/victim/add">Encoder une victime</a></li>
-				<li><a href="/SAVE-02/victim/list">Voir la liste des victimes</a></li>
+				<li><a href="/SAVE-02/victim/add"><s:message code="victimEncode"/></a></li>
+				<li><a href="/SAVE-02/victim/list"><s:message code="victimListSee"/></a></li>
 				
 			</ul>
 		

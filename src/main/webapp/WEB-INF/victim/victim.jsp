@@ -12,32 +12,32 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Infos sur la victime</h1>
+<h1><s:message code="victimInfos"/></h1>
 
 
 <ul class="list-group">
-  <li class="list-group-item"><b>Nom: </b><c:out value="${victim.firstname}" /></li>
-  <li class="list-group-item"><b>Prenom: </b><c:out value="${victim.lastname}" /></li>
-  <li class="list-group-item"><b>Date de naissance: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.birthdate}"/></li>
-  <li class="list-group-item"><b>Date de l'accident: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
-  <li class="list-group-item"><b>sexe: </b><c:out value="${victim.sex == 0 ? 'masculin' : 'feminin'}" /></li>
+  <li class="list-group-item"><b><s:message code="Firstname"/>: </b><c:out value="${victim.firstname}" /></li>
+  <li class="list-group-item"><b><s:message code="Lastname"/>: </b><c:out value="${victim.lastname}" /></li>
+  <li class="list-group-item"><b><s:message code="Birthdate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.birthdate}"/></li>
+  <li class="list-group-item"><b><s:message code="AccidentDate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
+  <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? 'masculin' : 'feminin'}" /></li>
 </ul>
 
  <div class="btn-group">
    <c:choose>
    	   <c:when test="${empty victim.responsibles}">
- 		<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${victim.id}/add'">ajouter un responsable</button>
+ 		<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${victim.id}/add'"><s:message code="addResponsible"/></button>
  	   </c:when>
  	   <c:otherwise>
- 	   		<button type="button" class="btn btn-info" onclick="location.href='../responsible/list/${victim.id}'">voir les responsables</button>
+ 	   		<button type="button" class="btn btn-info" onclick="location.href='../responsible/list/${victim.id}'"><s:message code="seeResponsibles"/></button>
  	   </c:otherwise>
  	</c:choose>
    <c:choose>
    	   <c:when test="${empty victim.location}">
- 		<button type="button" class="btn btn-primary" onclick="location.href='../location/${victim.id}/add'">ajouter une localisation</button>
+ 		<button type="button" class="btn btn-primary" onclick="location.href='../location/${victim.id}/add'"><s:message code="addLocation"/></button>
  	   </c:when>
  	   <c:otherwise>
- 	   		<button type="button" class="btn btn-info" onclick="location.href='../location/${victim.location.id}'">voir la localisation</button>
+ 	   		<button type="button" class="btn btn-info" onclick="location.href='../location/${victim.location.id}'"><s:message code="seeLocation"/></button>
  	   </c:otherwise>
  	</c:choose>
   

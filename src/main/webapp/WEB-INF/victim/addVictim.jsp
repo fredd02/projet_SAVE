@@ -12,7 +12,7 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Ajouter une victime</h1>
+<h1><s:message code="addVictim"/></h1>
 
 <sf:form method="POST" class="form-horizontal" modelAttribute="victim" action="add">
 
@@ -21,7 +21,7 @@
 	<s:bind path="firstname">
 		<div class="form-group ${status.error ? has-error : ''}">
 			<sf:label path="firstname" class="col-sm-2 control-label">
-				First name
+				<s:message code="Firstname"/>
 			</sf:label>
 			<div class="col-sm-10">
 				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" />
@@ -33,7 +33,7 @@
 	<s:bind path="lastname">
 		<div class="form-group ${status.error ? has-error : ''}">
 			<sf:label path="lastname" class="col-sm-2 control-label">
-				Last name
+				<s:message code="Lastname"/>
 			</sf:label>
 			<div class="col-sm-10">
 				<sf:input path="lastname" id="lastname" class="form-control" placeholder="lastname" />
@@ -45,7 +45,7 @@
 	<s:bind path="birthdate">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<sf:label path="birthdate" class="col-sm-2 control-label">
-					Birth date
+					<s:message code="Birthdate"/>
 				</sf:label>
 				<div class="col-sm-10">
 					<sf:input path="birthdate" id="birthdate" class="form-control"
@@ -58,7 +58,7 @@
 		<s:bind path="accidentdate">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<sf:label path="accidentdate" class="col-sm-2 control-label">
-					Accident date
+					<s:message code="AccidentDate"/>
 				</sf:label>
 				<div class="col-sm-10">
 					<sf:input path="accidentdate" id="accidentdate" class="form-control"
@@ -71,7 +71,7 @@
 		<s:bind path="sex">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<sf:label path="sex" class="col-sm-2 control-label">
-					Sex
+					<s:message code="sex"/>
 				</sf:label>
 				<div class="col-sm-10">
 					<sf:input path="sex" id="sex" class="form-control"
@@ -84,7 +84,7 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn-lg btn-primary pull-right">
-							ajouter
+							<s:message code="add"/>
 				</button>
 			</div>
 		</div>

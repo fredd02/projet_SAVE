@@ -11,22 +11,22 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Liste des victimes</h1>
+<h1><s:message code="victimList"/></h1>
 <c:if test="${fn:length(victimsList) == 0}">
 	<h4>Liste Vide</h4>
 </c:if>
-<h4>La liste contient: ${fn:length(victimsList)} victimes.</h4>
+<h4><s:message code="listContains"/>: ${fn:length(victimsList)} <s:message code="victims"/>.</h4>
 
 <table class="table table-striped">
 <thead>
 	<tr>
-		<th>Firstname</th>
-		<th>Lastname</th>
-		<th>Birth date</th>
-		<th>Accident date</th>
-		<th>Sex</th>
-		<th>Location</th>
-		<th>Responsible</th>
+		<th><s:message code="Firstname"/></th>
+		<th><s:message code="Lastname"/></th>
+		<th><s:message code="Birthdate"/></th>
+		<th><s:message code="AccidentDate"/></th>
+		<th><s:message code="sex"/></th>
+		<th><s:message code="AccidentLocation"/></th>
+		<th><s:message code="Responsible"/></th>
 		<th></th>
 		<th></th>
 		</tr>
@@ -46,7 +46,7 @@
 			</c:choose></td>
 			<td>
 				<c:if test="${!empty victim.location}">
-					<span class="glyphicon glyphicon-ok"></span>
+					<span class="glyphicon glyphicon-ok" ></span>
 				</c:if>
 			</td>
 				
@@ -67,7 +67,7 @@
 				if (confirm('Suppression de la victime  ?')) {
 				 this.disabled=true;
                  post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
-                                              ">Delete</button>
+                                              "><s:message code="delete" /></button>
 			
 			
 			
