@@ -99,6 +99,8 @@
 
 </sf:form>
 
+<button type="button" class="btn btn-warning" onclick="location.href='${pageContext.request.contextPath}/maps'">Select on maps</button>
+
 
 </div>
 

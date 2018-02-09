@@ -15,5 +15,10 @@ public interface IVictimRepository extends JpaRepository<Victim, Long>{
 	
 	@Query(value="SELECT v.firstname FROM victim v", nativeQuery=true)
 	List<String> getFirstNameofVictims();
+	
+	//uniquement liste des victimes ayant latitude et longitude
+	@Query(value="SELECT * FROM VICTIM v JOIN LOCATION l on v.FKLOCATION=l.id WHERE NOT (l.LATITUDE IS NULL "
+			+ "OR l.LONGITUDE IS NULL)", nativeQuery=true)
+	List<Victim> getVictimsWithLatLong();
 
 }
