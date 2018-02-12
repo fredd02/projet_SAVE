@@ -21,6 +21,7 @@
   <li class="list-group-item"><b><s:message code="Birthdate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.birthdate}"/></li>
   <li class="list-group-item"><b><s:message code="AccidentDate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
   <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? 'masculin' : 'feminin'}" /></li>
+  <li class="list-group-item"><b><s:message code="language"/>: </b><c:out value="${victim.language}" /></li>
 </ul>
 
  <div class="btn-group">

@@ -29,6 +29,7 @@
 		<th><s:message code="Responsible"/></th>
 		<th></th>
 		<th></th>
+		<th></th>
 		</tr>
 </thead>
 <tbody>
@@ -36,21 +37,21 @@
 		<tr>
 			<td><c:out value="${victim.firstname}" /></td>
 			<td><c:out value="${victim.lastname}" /></td>
-			<td><fmt:formatDate value="${victim.birthdate}" pattern="dd-MM-yyyy" /></td>
-			<td><fmt:formatDate value="${victim.accidentdate}" pattern="dd-MM-yyyy" /></td>
-			<td><c:choose>
+			<td align="center"><fmt:formatDate value="${victim.birthdate}" pattern="dd/MM/yyyy" /></td>
+			<td align="center"><fmt:formatDate value="${victim.accidentdate}" pattern="dd/MM/yyyy" /></td>
+			<td align="center"><c:choose>
 				<c:when test="${victim.sex ==0}">M
 				</c:when>
 				<c:otherwise>F</c:otherwise>
 				
 			</c:choose></td>
-			<td>
+			<td align="center">
 				<c:if test="${!empty victim.location}">
 					<span class="glyphicon glyphicon-ok" ></span>
 				</c:if>
 			</td>
 				
-			<td>
+			<td align="center">
 				<c:if test="${!empty victim.responsibles}">
 					<span class="glyphicon glyphicon-ok"></span>
 				</c:if>
@@ -60,6 +61,10 @@
 			<button class="btn btn-primary" 
 				onclick="location.href='${infoUrl}'">Infos</button>
 			</td>
+			<td><s:url value="/victim/${victim.id}/update" var="updateUrl" />
+			<button class="btn btn-info" 
+				onclick="location.href='${updateUrl}'">Update</button>
+			</td>
 			<td>
 			<s:url value="/victim/${victim.id}/delete" var="deleteUrl" />
 			<button class="btn btn-danger"
@@ -68,8 +73,6 @@
 				 this.disabled=true;
                  post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
                                               "><s:message code="delete" /></button>
-			
-			
 			
 			</td>
 		</tr>

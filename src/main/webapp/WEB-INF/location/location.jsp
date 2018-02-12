@@ -23,6 +23,9 @@
   <li class="list-group-item"><b>Longitude: </b><c:out value="${location.longitude}" /></li>
  
 </ul>
+<s:url value="/location/${location.id}/update" var="updateUrl" />
+			<button class="btn btn-info" 
+				onclick="location.href='${updateUrl}'"><s:message code="update" /></button>
 
 
 

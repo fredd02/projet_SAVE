@@ -11,7 +11,7 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Liste des responsables  de <c:out value="${victim.firstname} ${victim.lastname}" /></h1>
+<h2><s:message code="listResponsibles"/>: <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
 
 <table class="table table-stripped">
 	<thead>
@@ -19,6 +19,9 @@
 		<th>Firstname</th>
 		<th>Lastname</th>
 		<th>Email</th>
+		<th></th>
+		<th></th>
+		<th></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -27,6 +30,24 @@
 				<td><c:out value="${responsible.firstname}" /></td>
 				<td><c:out value="${responsible.lastname}" /></td>
 				<td><c:out value="${responsible.email}" /></td>
+				<td><s:url value="/responsible/${responsible.id}" var="infoUrl" />
+			<button class="btn btn-primary" 
+				onclick="location.href='${infoUrl}'">Infos</button>
+			</td>
+			<td><s:url value="/responsible/${responsible.id}/update" var="updateUrl" />
+			<button class="btn btn-info" 
+				onclick="location.href='${updateUrl}'"><s:message code="update" /></button>
+			</td>
+			<td>
+			<s:url value="/responsible/${responsible.id}/delete" var="deleteUrl" />
+			<button class="btn btn-danger"
+				onclick="
+				if (confirm('Suppression du responsable  ?')) {
+				 this.disabled=true;
+                 post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
+                                              "><s:message code="delete" /></button>
+			
+			</td>
 			
 			</tr>
 		</c:forEach>

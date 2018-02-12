@@ -47,6 +47,9 @@ public class Responsible {
 	@Column
 	private String phone;
 	
+	@Column
+	private String connection;
+	
 	
 	
 	
@@ -157,6 +160,18 @@ public class Responsible {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+
+	public String getConnection() {
+		return connection;
+	}
+
+
+	public void setConnection(String connection) {
+		this.connection = connection;
+	}
+	
+	
 
 
 	

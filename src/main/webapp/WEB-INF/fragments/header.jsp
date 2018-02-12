@@ -17,6 +17,7 @@
 <s:url value="/resources/css/style.css" var="styleCss" />
 <link rel="stylesheet" href="${bootstrapCss}" />
 <link rel="stylesheet" href="${styleCss}" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 </head>

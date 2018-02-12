@@ -16,4 +16,5 @@
 
 <script src="${BootstrapJs}"></script>
 <script src="${MyAppJs}"></script>
+
 </body>

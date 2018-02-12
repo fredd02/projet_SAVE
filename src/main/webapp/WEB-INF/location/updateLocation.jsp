@@ -12,12 +12,12 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h2>Ajouter une localisation à la victime <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
+<h2>Modifier la localisation de la victime <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
 
 <br>
 
 
-<sf:form id	="form" method="POST" class="form-horizontal" modelAttribute="location" action="add">
+<sf:form id="form" method="POST" class="form-horizontal" modelAttribute="location" action="update">
 
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
 	
@@ -95,13 +95,19 @@
 	<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn-lg btn-primary pull-right">
-							<s:message code="add" />
+							<s:message code="update"/>
 				</button>
 			</div>
 		</div>
 
 
+
+
+
+
+
 </sf:form>
+
 
 
 
@@ -116,7 +122,6 @@
 	});
 
 </script>
-
 
 <jsp:include page="../fragments/footer.jsp" />
 </html>

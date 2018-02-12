@@ -124,6 +124,42 @@ public class VictimController {
 		return "redirect:/victim/list";
 		
 	}
+	
+	//methode GET pour updater une victime
+	@RequestMapping(value="/{id}/update", method=RequestMethod.GET)
+	public String updateVictimGet(@PathVariable Long id, Model model) {
+		log.info("methode GET pour updater une victime");
+		//verifie si la victime existe
+		if(!victimDAO.exists(id))
+			throw new NotFoundException("victime non trouvée pour update ", id);
+		
+		Victim victim = victimDAO.getOne(id);
+		model.addAttribute("victim", victim);
+		
+		return "victim/updateVictim";
+
+	}
+	
+	//methode POST pour updater une victime
+	@RequestMapping(value="/{id}/update", method=RequestMethod.POST)
+		public String updateVictimPost(@PathVariable Long id,@Valid Victim victim,BindingResult errors, 
+				Model model, RedirectAttributes rModel) {
+			
+			log.info("methode POST pour updater une victime");
+			
+			//gestion de la validation
+			if(errors.hasErrors()) {
+				return "victim/"+id+"/update";
+			}else {
+				Victim victim_updat = victimDAO.save(victim);
+				rModel.addFlashAttribute(victim_updat);
+				
+				return "redirect:/victim/" + victim_updat.getId();
+				
+			}
+			
+		}
+	
 
 
 }

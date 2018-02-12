@@ -12,15 +12,15 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h4>Affichage de la map</h4>
-<form class="form-inline" action="#">
+<h4>Affichage de la map pour ${id}</h4>
+<form class="form-inline" action="${pageContext.request.contextPath}/location/${id}/${addOrUpdate}">
 	<div class="form-group">
 		<label for="latitude">latitude</label>
-		<input type="number" class="form-control" id="latitude">
+		<input type="number" step="0.000000000000001" class="form-control" id="latitude" name="latitude">
 	</div>
 	<div class="form-group">
 		<label for="longitude">longitude</label>
-		<input type="number" class="form-control" id="longitude">
+		<input type="number" step="0.000000000000001" class="form-control" id="longitude" name="longitude">
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>
@@ -51,6 +51,7 @@
         	  
           }
       });
+        map.setOptions({draggableCursor:'crosshair'});
         
       }
       

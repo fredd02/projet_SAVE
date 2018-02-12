@@ -15,14 +15,15 @@
 <h1>Infos sur le responsable</h1>
 
 <ul class="list-group">
-  <li class="list-group-item"><b>Nom: </b><c:out value="${responsible.firstname}" /></li>
-  <li class="list-group-item"><b>Prenom: </b><c:out value="${responsible.lastname}" /></li>
-  <li class="list-group-item"><b>Code Postal: </b><c:out value="${responsible.postCode}" /></li>
-  <li class="list-group-item"><b>Ville: </b><c:out value="${responsible.city}" /></li>
-  <li class="list-group-item"><b>Rue: </b><c:out value="${responsible.street}" /></li>
-  <li class="list-group-item"><b>Numero: </b><c:out value="${responsible.number}" /></li>
-  <li class="list-group-item"><b>email: </b><c:out value="${responsible.email}" /></li>
-  <li class="list-group-item"><b>telephone: </b><c:out value="${responsible.phone}" /></li>
+  <li class="list-group-item"><b><s:message code="Firstname" />: </b><c:out value="${responsible.firstname}" /></li>
+  <li class="list-group-item"><b><s:message code="Lastname" />: </b><c:out value="${responsible.lastname}" /></li>
+  <li class="list-group-item"><b><s:message code="postCode" />: </b><c:out value="${responsible.postCode}" /></li>
+  <li class="list-group-item"><b><s:message code="city" />: </b><c:out value="${responsible.city}" /></li>
+  <li class="list-group-item"><b><s:message code="street" />: </b><c:out value="${responsible.street}" /></li>
+  <li class="list-group-item"><b><s:message code="number" />: </b><c:out value="${responsible.number}" /></li>
+  <li class="list-group-item"><b><s:message code="mail" />: </b><c:out value="${responsible.email}" /></li>
+  <li class="list-group-item"><b><s:message code="phone" />: </b><c:out value="${responsible.phone}" /></li>
+  <li class="list-group-item"><b><s:message code="connection" />: </b><c:out value="${responsible.connection}" /></li>
  
 </ul>
 

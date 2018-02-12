@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page session="false" language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -12,11 +12,9 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h2><s:message code="addResponsibleVictim"/>: <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
-
-<br>
-
-<sf:form method="POST" class="form-horizontal" modelAttribute="responsible" action="add">
+	<h1><s:message code="updateResponsible"/></h1>
+	
+	<sf:form method="POST" class="form-horizontal" modelAttribute="responsible" action="update">
 
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
 	
@@ -113,13 +111,14 @@
 	<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn-lg btn-primary pull-right">
-							<s:message code="add" />
+							<s:message code="update" />
 				</button>
 			</div>
 		</div>
 </sf:form>
-
+	
+	
 </div>
 
 <jsp:include page="../fragments/footer.jsp" />
-</html>
+</html>	

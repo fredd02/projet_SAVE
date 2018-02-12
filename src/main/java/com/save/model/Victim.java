@@ -23,6 +23,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity(name="victim")
 public class Victim {
 	
+	public static enum LANGUAGE {
+		DEUTSCH,ENGLISH,FRANÇAIS,VLAAMS
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -52,6 +56,9 @@ public class Victim {
 	@Max(value=1)
 	@Column
 	private Integer sex;
+	
+	@Column
+	private LANGUAGE language;
 	
 	@ManyToOne
 	@JoinColumn(name="FKLocation")
@@ -144,6 +151,16 @@ public class Victim {
 	public void addResponsible(Responsible responsible) {
 		responsibles.add(responsible);
 	}
+
+	public LANGUAGE getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(LANGUAGE language) {
+		this.language = language;
+	}
+	
+	
 	
 	
 	

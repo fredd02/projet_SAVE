@@ -1,5 +1,6 @@
 package com.save.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -7,6 +8,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,8 @@ import com.save.model.Responsible;
 import com.save.model.Victim;
 import com.save.repository.IResponsibleRepository;
 import com.save.repository.IVictimRepository;
+import com.save.web.NoAccessException;
+import com.save.web.NotFoundException;
 
 @Controller
 @RequestMapping("responsible")
@@ -97,6 +101,67 @@ public class ResponsibleController {
 		
 		
 		return "responsible/responsiblesVictim";
+	}
+	
+	//methode GET pour updater un responsable
+	@RequestMapping(value="{id}/update", method=RequestMethod.GET)
+	public String responsibleUpdateGet(@PathVariable Long id, Model model) {
+		log.info("methode GET pour updater un responsable");
+		
+		//verifie si le responsable existe
+		if(!responsibleDAO.exists(id))
+			throw new NotFoundException("responsable non trouvé pour update" , id);
+		
+		Responsible responsible = responsibleDAO.findOne(id);
+		model.addAttribute("responsible", responsible);
+		
+		return "responsible/updateResponsible";
+	}
+	
+	//methode POST pour updater un responsable
+	@RequestMapping(value="{id}/update", method=RequestMethod.POST)
+	public String responsibleUpdatePost(@PathVariable Long id, @Valid Responsible responsible, BindingResult errors, 
+			Model model, RedirectAttributes rModel) {
+		
+			log.info("methode POST pour updater un responsable");
+			
+			//gestion de la validation
+			if(errors.hasErrors()) {
+				return "reponsible/"+id+"/update";
+			}else {
+				Responsible responsible_updat = responsibleDAO.save(responsible);
+				rModel.addFlashAttribute(responsible_updat);
+				
+				return "redirect:/responsible/"+responsible_updat.getId();
+			}
+		
+	}
+	
+	//methode POST pour supprimer un responsable
+	@RequestMapping(value="/{id}/delete", method=RequestMethod.POST)
+	public String responsibleDeletePost(@PathVariable Long id) {
+		
+		log.info("methode POST pour supprimer un responsable");
+		//verifie si le responsable existe
+		if(!responsibleDAO.exists(id))
+			throw new NotFoundException("responsable non trouvé pour suppression", id);
+		
+		//suppression du lien avec la victime
+		List<Victim> listVictimsFromResponsible = victimDAO.getVictimFromResponsible(id);
+		Iterator i = listVictimsFromResponsible.iterator();
+		while(i.hasNext()) {
+			Victim v = (Victim)i.next();
+			v.setResponsibles(null);
+		}
+			
+		try {
+			responsibleDAO.delete(id);
+		} catch (DataIntegrityViolationException e) {
+			log.error("SQL", e);
+			throw new NoAccessException("Suppression impossible: ce responsable possède des dépendances");
+		}
+		log.info("suppression du responsable: " + id);
+		return "redirect:/victim/list";
 	}
 
 }
