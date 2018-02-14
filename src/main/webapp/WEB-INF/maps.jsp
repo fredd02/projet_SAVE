@@ -38,7 +38,7 @@
         
         var hannut = {lat: 50.672750, lng: 5.076440};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 9,
+          zoom: 8,
           center: hannut
         });
         google.maps.event.addListener(map,'click',function(event){

@@ -1,10 +1,13 @@
 package com.save.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +22,7 @@ import com.save.model.Location;
 import com.save.model.Victim;
 import com.save.repository.ILocationRepository;
 import com.save.repository.IVictimRepository;
+import com.save.web.NoAccessException;
 import com.save.web.NotFoundException;
 
 @Controller
@@ -160,6 +164,29 @@ public class LocationController {
 			return "location/location";
 		}
 			
+	}
+	
+	//methode POST pour supprimer une localisation
+	@RequestMapping(value="{id}/delete", method=RequestMethod.POST)
+	public String locationDeletePost(@PathVariable Long id) {
+		log.info("methode POST pour effacer une victime");
+		//verifie si la localisation existe
+		if(!locationDAO.exists(id))
+			throw new NotFoundException("localisation non trouvée ", id);
+		try {
+			//suppression de la localisation sur les victimes concernées
+			List<Victim> listVictims = victimDAO.getVictimsFromLocation(id);
+			for(Victim victim : listVictims){
+				victim.setLocation(null);
+				
+			}
+			locationDAO.delete(id);
+		}catch (DataIntegrityViolationException e) {
+			log.error("SQL", e);
+			throw new NoAccessException("suppression impossible: cette localisation possède des dépendances");
+		}
+		log.info("suppression de la localisation " + id );
+		return "redirect:/victim/list";
 	}
 
 	

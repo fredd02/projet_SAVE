@@ -26,6 +26,15 @@
 <s:url value="/location/${location.id}/update" var="updateUrl" />
 			<button class="btn btn-info" 
 				onclick="location.href='${updateUrl}'"><s:message code="update" /></button>
+				
+		<s:url value="/location/${location.id}/delete" var="deleteUrl" />
+		<button class="btn btn-danger" 
+				onclick="
+					if(confirm('Suppression de la localisation ?')){
+						this.disabled=true;
+						post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
+                                              "><s:message code="delete" /></button>
+					
 
 
 

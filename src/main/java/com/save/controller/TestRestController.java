@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,7 @@ public class TestRestController {
 		return victim;
 		
 	}
-	
+	@CrossOrigin(origins= "http://localhost:8383")
 	@RequestMapping("/stars")
 	public List<Star> listStars(){
 		//liste des victimes ayant param Latitude et longitude
