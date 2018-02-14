@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.save.model.Location;
 import com.save.model.Responsible;
 import com.save.model.Victim;
 import com.save.repository.IResponsibleRepository;
