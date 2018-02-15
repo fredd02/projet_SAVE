@@ -11,7 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
-@Entity(name="user")
+@Entity(name="users")
 public class User {
 	
 	@Id

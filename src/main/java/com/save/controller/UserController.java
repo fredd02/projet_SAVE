@@ -1,5 +1,7 @@
 package com.save.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,11 @@ import com.save.service.IUserService;
 import com.save.validator.UserValidator;
 
 @Controller
+@RequestMapping("/")
 public class UserController {
+	
+	//logger
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private IUserService userService;
@@ -25,8 +31,9 @@ public class UserController {
 	@Autowired
 	private UserValidator userValidator;
 	
-	@RequestMapping(value="/registration", method=RequestMethod.GET)
+	@RequestMapping(value="registration", method=RequestMethod.GET)
 	public String registration(Model model) {
+		log.info("methode GET pour registration");
 		model.addAttribute("userForm", new User());
 		
 		return "registration";
@@ -45,7 +52,7 @@ public class UserController {
 		
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 		
-		return "redirect:/welcome";
+		return "redirect:/home";
 		
 	}
 	
@@ -60,9 +67,9 @@ public class UserController {
 		return "login";
 	}
 	
-	@RequestMapping(value= {"/","/welcome"}, method=RequestMethod.GET)
+	@RequestMapping(value= {"/","/home"}, method=RequestMethod.GET)
 	public String welcome(Model model) {
-		return "welcome";
+		return "home";
 	}
 
 }

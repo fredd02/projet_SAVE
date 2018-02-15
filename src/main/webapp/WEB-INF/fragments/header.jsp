@@ -1,8 +1,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
-<%-- <%@ taglib prefix="sec" --%>
-<%-- 	uri="http://www.springframework.org/security/tags"%> --%>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%> 
 <%@ page session="false" language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
@@ -19,6 +18,9 @@
 <link rel="stylesheet" href="${styleCss}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<s:url value="/login" var="loginUrl" />
+<s:url value="/logout" var="logoutUrl" />
+
 
 </head>
 
@@ -34,6 +36,21 @@
 				<li><a href="/SAVE-02/victim/add"><s:message code="victimEncode"/></a></li>
 				<li><a href="/SAVE-02/victim/list"><s:message code="victimListSee"/></a></li>
 				
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+			 <sec:authorize access="isAuthenticated()">
+				<li><a
+					href="" onclick="post('${logoutUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})" >
+					<span class="glyphicon glyphicon-log-out"></span>
+						Logout <sec:authentication property="principal.username" /></a>
+				</li>
+			</sec:authorize>
+			<sec:authorize access="!isAuthenticated()">
+				<li><a
+					href="${loginUrl}"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</sec:authorize>
 			</ul>
 		
 		
