@@ -17,7 +17,7 @@
 </c:if>
 <h4><s:message code="listContains"/>: ${fn:length(victimsList)} <s:message code="victims"/>.</h4>
 
-<table class="table table-striped">
+<table class="display" id="victimsTable">
 <thead>
 	<tr>
 		<th><s:message code="Firstname"/></th>
@@ -82,6 +82,27 @@
 </table>
 
 </div>
+<script>
+$(document).ready(function(){
+	$.fn.dataTable.moment('DD/MM/YYYY');
+	
+	$('#victimsTable').dataTable({
+		"columns": [
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			{ "orderable": false},
+			{ "orderable": false},
+			{ "orderable": false}
+		]
+	});
+});
+</script>
+
 
 <jsp:include page="../fragments/footer.jsp" />
 </html>
