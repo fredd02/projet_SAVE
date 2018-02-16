@@ -16,32 +16,35 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name="victim")
 public class Victim {
 	
 	public static enum LANGUAGE {
-		DEUTSCH,ENGLISH,FRANÇAIS,VLAAMS
+		DEUTSCH,ENGLISH,FRANCAIS,VLAAMS
 	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotNull
-	@Size(min=2, max=30, message="le nom doit faire entre 2 et 30 caratères")
+	@NotEmpty
+	@Size(min=2, max=30, message="{victim.firstname}")
 	@Column
 	private String firstname;
 	
-	@NotNull
-	@Size(min=2, max=30, message="le nom doit faire entre 2 et 30 caratères")
+	@NotEmpty
+	@Size(min=2, max=30, message="{victim.lastname}")
 	@Column
 	private String lastname;
 	
-	@NotNull
+	//@NotNull
+	//@Pattern(regexp="^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message="{date.valid}")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column
 	private Date birthdate;

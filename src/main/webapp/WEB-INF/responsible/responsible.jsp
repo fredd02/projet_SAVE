@@ -23,7 +23,7 @@
   <li class="list-group-item"><b><s:message code="number" />: </b><c:out value="${responsible.number}" /></li>
   <li class="list-group-item"><b><s:message code="mail" />: </b><c:out value="${responsible.email}" /></li>
   <li class="list-group-item"><b><s:message code="phone" />: </b><c:out value="${responsible.phone}" /></li>
-  <li class="list-group-item"><b><s:message code="connection" />: </b><c:out value="${responsible.connection}" /></li>
+  <li class="list-group-item"><b><s:message code="victimConnection" />: </b><c:out value="${responsible.connection}" /></li>
  
 </ul>
 

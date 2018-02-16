@@ -19,6 +19,8 @@
 <s:message code="AccidentDate" var="AccidentDate"/>
 <s:message code="sex" var="sex"/>
 <s:message code="language" var="language"/>
+<s:message code="SelectLanguage" var="selectLanguage"/>
+<s:message code="selectSex" var="selectSex" />
 
 
 <sf:form method="POST" class="well form-horizontal" modelAttribute="victim" action="add">
@@ -27,7 +29,7 @@
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
 	
 	<s:bind path="firstname">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="firstname" class="col-md-4 control-label">
 				${Firstname}
 			</sf:label>
@@ -42,7 +44,7 @@
 	</s:bind>
 	
 	<s:bind path="lastname">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="lastname" class="col-md-4 control-label">
 				${Lastname}
 			</sf:label>
@@ -97,8 +99,11 @@
 				<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-					<sf:input path="sex" id="sex" class="form-control"
-						placeholder="${sex}" />
+					<sf:select path="sex" class="form-control">
+						<sf:option value="" label="${selectSex}" />
+						<sf:option value="0"><s:message code="male" /></sf:option>
+						<sf:option value="1"><s:message code="female" /></sf:option>
+					</sf:select>
 					<sf:errors path="sex" class="control-label" />
 				</div>
 				</div>
@@ -114,7 +119,7 @@
 				<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-					<s:message code="SelectLanguage" var="selectLanguage"/>
+					
 					<sf:select path="language" class="form-control">
 						<sf:option value="" label="${selectLanguage}" />
 						<sf:options path="${language}" />

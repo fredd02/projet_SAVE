@@ -38,7 +38,18 @@ public class ResponsibleController {
 	//logger
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	//methode GET pour ajouter un responsable
+	/**
+	 * methode GET pour ajouter une personne de contact à une victime
+	 * @param id
+	 * 		id de la victime
+	 * @param responsible
+	 * 		objet responsible à ajouter au modèle
+	 * @param model
+	 * 		model envoyé à la vue jsp
+	 * @return
+	 * 		chemin de la vue jsp
+	 */
+	
 	@RequestMapping(value="/{id}/add", method=RequestMethod.GET)
 	public String addResponsibleGet(@PathVariable Long id, @ModelAttribute Responsible responsible, Model model) {
 		
@@ -51,7 +62,21 @@ public class ResponsibleController {
 		
 	}
 	
-	//methode POST pour ajouter un responsable
+	/**
+	 * Methode POST pour ajouter une personne de contact à une victime
+	 * @param id
+	 * 		id de la victime
+	 * @param responsible
+	 * 		responsable récupéré du formulaire de la page jsp
+	 * @param errors
+	 * 		erreurs éventuelles à l'encodage
+	 * @param model
+	 * @param rModel
+	 * 		pour que les données du responsable survivent à la redirection
+	 * @return
+	 * 		redirige vers la page d'information sur le responsable
+	 */
+	
 	@RequestMapping(value="/{id}/add", method=RequestMethod.POST)
 	public String addResponsiblePost(@PathVariable Long id,@Valid Responsible responsible,BindingResult errors, Model model,
 					RedirectAttributes rModel) {
@@ -109,7 +134,7 @@ public class ResponsibleController {
 		
 		//verifie si le responsable existe
 		if(!responsibleDAO.exists(id))
-			throw new NotFoundException("responsable non trouv� pour update" , id);
+			throw new NotFoundException("responsable non trouv� pour update" , id);
 		
 		Responsible responsible = responsibleDAO.findOne(id);
 		model.addAttribute("responsible", responsible);
@@ -143,7 +168,7 @@ public class ResponsibleController {
 		log.info("methode POST pour supprimer un responsable");
 		//verifie si le responsable existe
 		if(!responsibleDAO.exists(id))
-			throw new NotFoundException("responsable non trouv� pour suppression", id);
+			throw new NotFoundException("responsable non trouv� pour suppression", id);
 		
 		//suppression du lien avec la victime
 		List<Victim> listVictimsFromResponsible = victimDAO.getVictimFromResponsible(id);
@@ -157,7 +182,7 @@ public class ResponsibleController {
 			responsibleDAO.delete(id);
 		} catch (DataIntegrityViolationException e) {
 			log.error("SQL", e);
-			throw new NoAccessException("Suppression impossible: ce responsable poss�de des d�pendances");
+			throw new NoAccessException("Suppression impossible: ce responsable poss�de des d�pendances");
 		}
 		log.info("suppression du responsable: " + id);
 		return "redirect:/victim/list";

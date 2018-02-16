@@ -12,94 +12,120 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-	<h1><s:message code="updateVictim"/></h1>
+	
 
-<sf:form method="POST" class="form-horizontal" modelAttribute="victim" action="update">
+<sf:form method="POST" class="well form-horizontal" modelAttribute="victim" action="update">
+<legend class="text-center"><h2><b><s:message code="updateVictim"/></b></h2></legend>
 
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
 	
 	<s:bind path="firstname">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="firstname" class="col-sm-2 control-label">
-				<s:message code="Firstname"/>
+			<sf:label path="firstname" class="col-md-4 control-label">
+				${Firstname}
 			</sf:label>
-			<div class="col-sm-10">
-				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" />
-				<sf:errors path="firstname" class="control-label" />
+			<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<sf:input path="firstname" id="firstname" class="form-control" placeholder="${Firstname}" />
+					<sf:errors path="firstname" class="control-label" />
+				</div>
 			</div>
 		</div>
 	</s:bind>
 	
 	<s:bind path="lastname">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="lastname" class="col-sm-2 control-label">
-				<s:message code="Lastname"/>
+			<sf:label path="lastname" class="col-md-4 control-label">
+				${Lastname}
 			</sf:label>
-			<div class="col-sm-10">
-				<sf:input path="lastname" id="lastname" class="form-control" placeholder="lastname" />
+			<div class="col-md-4 inputGroupContainer">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<sf:input path="lastname" id="lastname" class="form-control" placeholder="${Lastname}" />
 				<sf:errors path="lastname" class="control-label" />
+				</div>
 			</div>
 		</div>
 	</s:bind>
 	
 	<s:bind path="birthdate">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<sf:label path="birthdate" class="col-sm-2 control-label">
-					<s:message code="Birthdate"/>
+				<sf:label path="birthdate" class="col-md-4 control-label">
+					${Birthdate}
 				</sf:label>
-				<div class="col-sm-10">
+				<div class="col-md-4 inputGroupContainer">
+				<div class="input-group" id="datetimepicker">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					
 					<sf:input path="birthdate" id="birthdate" class="form-control"
-						placeholder="birthdate" />
+						placeholder="${Birthdate}" />
 					<sf:errors path="birthdate" class="control-label" />
+				</div>
 				</div>
 			</div>
 		</s:bind>
 		
 		<s:bind path="accidentdate">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<sf:label path="accidentdate" class="col-sm-2 control-label">
-					<s:message code="AccidentDate"/>
+				<sf:label path="accidentdate" class="col-md-4 control-label">
+					${AccidentDate}
 				</sf:label>
-				<div class="col-sm-10">
+				<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					<sf:input path="accidentdate" id="accidentdate" class="form-control"
-						placeholder="accidentdate" />
+						placeholder="${AccidentDate}"/>
 					<sf:errors path="accidentdate" class="control-label" />
+				</div>
 				</div>
 			</div>
 		</s:bind>
 		
 		<s:bind path="sex">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<sf:label path="sex" class="col-sm-2 control-label">
-					<s:message code="sex"/>
+				<sf:label path="sex" class="col-md-4 control-label">
+					${sex}
 				</sf:label>
-				<div class="col-sm-10">
-					<sf:input path="sex" id="sex" class="form-control"
-						placeholder="sex" />
+				<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+					<sf:select path="sex" class="form-control">
+						<sf:option value="" label="${selectSex}" />
+						<sf:option value="0"><s:message code="male" /></sf:option>
+						<sf:option value="1"><s:message code="female" /></sf:option>
+					</sf:select>
 					<sf:errors path="sex" class="control-label" />
+				</div>
 				</div>
 			</div>
 		</s:bind>
 		
+		
 		<s:bind path ="language">
 			<div class="form-group">
-				<sf:label path="language" class="col-sm-2 control-label">
-					<s:message code="language"/>
+				<sf:label path="language" class="col-md-4 control-label">
+					${language}
 				</sf:label>	
-				<div class="col-sm-10">	
-					<s:message code="SelectLanguage" var="selectLanguage"/>
+				<div class="col-md-4 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+					
 					<sf:select path="language" class="form-control">
 						<sf:option value="" label="${selectLanguage}" />
 						<sf:options path="${language}" />
 					</sf:select>
 				</div>
+				</div>
 			</div>
 		</s:bind>
 		
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn-lg btn-primary pull-right">
-							<s:message code="update"/>
+			<label class="col-md-4 control-label"></label>
+  			<div class="col-md-4"><br>
+			
+				<button type="submit" class="btn btn-primary">
+							<s:message code="update"/> <span class="glyphicon glyphicon-save"></span>
 				</button>
 			</div>
 		</div>

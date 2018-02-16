@@ -11,13 +11,13 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1><s:message code="victimList"/></h1>
+<legend class="text-center"><h2><b><s:message code="victimList"/></b></h2></legend>
 <c:if test="${fn:length(victimsList) == 0}">
 	<h4>Liste Vide</h4>
 </c:if>
-<h4><s:message code="listContains"/>: ${fn:length(victimsList)} <s:message code="victims"/>.</h4>
 
-<table class="display" id="victimsTable">
+
+<table class="table table-striped table-bordered nowrap" id="victimsTable" cellspacing="0" width="100%">
 <thead>
 	<tr>
 		<th><s:message code="Firstname"/></th>
@@ -86,20 +86,22 @@
 $(document).ready(function(){
 	$.fn.dataTable.moment('DD/MM/YYYY');
 	
-	$('#victimsTable').dataTable({
+	var table = $('#victimsTable').dataTable({
+		responsive: true,
 		"columns": [
 			null,
 			null,
 			null,
 			null,
 			null,
-			null,
-			null,
+			{ "orderable": false},
+			{ "orderable": false},
 			{ "orderable": false},
 			{ "orderable": false},
 			{ "orderable": false}
 		]
 	});
+	new $.fn.dataTable.FixedHeader(table);
 });
 </script>
 

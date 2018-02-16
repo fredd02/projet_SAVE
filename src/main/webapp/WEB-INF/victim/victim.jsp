@@ -12,19 +12,18 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1><s:message code="victimInfos"/></h1>
+<div class="col-md-6 col-md-offset-3 text-center"><h2><b><s:message code="victimInfos"/></b></h2></div>
 
 
-<ul class="list-group">
+
+<ul class="well list-group col-md-6 col-md-offset-3">
   <li class="list-group-item"><b><s:message code="Firstname"/>: </b><c:out value="${victim.firstname}" /></li>
   <li class="list-group-item"><b><s:message code="Lastname"/>: </b><c:out value="${victim.lastname}" /></li>
   <li class="list-group-item"><b><s:message code="Birthdate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.birthdate}"/></li>
   <li class="list-group-item"><b><s:message code="AccidentDate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
   <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? 'masculin' : 'feminin'}" /></li>
   <li class="list-group-item"><b><s:message code="language"/>: </b><c:out value="${victim.language}" /></li>
-</ul>
-
- <div class="btn-group">
+  <li class="list-group-item text-center"> <div class="btn-group">
    <c:choose>
    	   <c:when test="${empty victim.responsibles}">
  		<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${victim.id}/add'"><s:message code="addResponsible"/></button>
@@ -42,8 +41,11 @@
  	   </c:otherwise>
  	</c:choose>
   
-  
 </div> 
+</li>
+</ul>
+
+
 
 </div>
 
