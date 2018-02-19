@@ -16,9 +16,10 @@
 <table class="table table-stripped">
 	<thead>
 	<tr>
-		<th>Firstname</th>
-		<th>Lastname</th>
-		<th>Email</th>
+		<th><s:message code="Firstname" /></th>
+		<th><s:message code="Lastname" /></th>
+		<th><s:message code="mail" /></th>
+		<th><s:message code="victimConnection" /></th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -30,6 +31,7 @@
 				<td><c:out value="${responsible.firstname}" /></td>
 				<td><c:out value="${responsible.lastname}" /></td>
 				<td><c:out value="${responsible.email}" /></td>
+				<td><c:out value="${responsible.connection}" /></td>
 				<td><s:url value="/responsible/${responsible.id}" var="infoUrl" />
 			<button class="btn btn-primary" 
 				onclick="location.href='${infoUrl}'">Infos</button>
@@ -42,7 +44,7 @@
 			<s:url value="/responsible/${responsible.id}/delete" var="deleteUrl" />
 			<button class="btn btn-danger"
 				onclick="
-				if (confirm('Suppression du responsable  ?')) {
+				if (confirm('Suppression du contact  ?')) {
 				 this.disabled=true;
                  post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
                                               "><s:message code="delete" /></button>

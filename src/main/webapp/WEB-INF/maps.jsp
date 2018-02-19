@@ -12,7 +12,7 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h4>Affichage de la map pour ${id}</h4>
+<h2><s:message code="select.location.map" /></h2>
 <form class="form-inline" action="${pageContext.request.contextPath}/location/${id}/${addOrUpdate}">
 	<div class="form-group">
 		<label for="latitude">latitude</label>

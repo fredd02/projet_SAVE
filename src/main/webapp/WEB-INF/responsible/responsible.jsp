@@ -12,9 +12,9 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h1>Infos sur le responsable</h1>
+<div class="col-md-8 col-md-offset-2 text-center"><h2><b><s:message code="responsible.infos"/></b></h2></div>
 
-<ul class="list-group">
+<ul class="well list-group col-md-6 col-md-offset-3">
   <li class="list-group-item"><b><s:message code="Firstname" />: </b><c:out value="${responsible.firstname}" /></li>
   <li class="list-group-item"><b><s:message code="Lastname" />: </b><c:out value="${responsible.lastname}" /></li>
   <li class="list-group-item"><b><s:message code="postCode" />: </b><c:out value="${responsible.postCode}" /></li>

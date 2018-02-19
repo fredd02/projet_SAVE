@@ -63,7 +63,7 @@
 			</td>
 			<td><s:url value="/victim/${victim.id}/update" var="updateUrl" />
 			<button class="btn btn-info" 
-				onclick="location.href='${updateUrl}'">Update</button>
+				onclick="location.href='${updateUrl}'"><s:message code="update"/></button>
 			</td>
 			<td>
 			<s:url value="/victim/${victim.id}/delete" var="deleteUrl" />

@@ -11,6 +11,14 @@
 <jsp:include page="../fragments/header.jsp">
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
+<s:message code="Birthdate" var="Birthdate"/>
+<s:message code="Firstname" var="Firstname"/>
+<s:message code="Lastname" var="Lastname"/>
+<s:message code="AccidentDate" var="AccidentDate"/>
+<s:message code="sex" var="sex"/>
+<s:message code="language" var="language"/>
+<s:message code="SelectLanguage" var="selectLanguage"/>
+<s:message code="selectSex" var="selectSex" />
 <div class="container">
 	
 
