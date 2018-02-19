@@ -38,8 +38,22 @@ public class LocationController {
 	//logger
 		private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
+		/**
+		 * methode GET pour ajouter une localisation Ã  une victime
+		 * @param id
+		 * 		id de la victime
+		 * @param latitude
+		 * 		latitude de la localisation
+		 * @param longitude
+		 * 		longitude de la localisation
+		 * @param location
+		 * 		objet location ajoutÃ© au model
+		 * @param model
+		 * 		modele passÃ© Ã  la page jsp
+		 * @return
+		 * 		chemin vers la page jsp pour ajouter une localisation
+		 */
 		
-		//methode GET pour ajouter une localisation - id de la victime
 	@RequestMapping(value="/{id}/add", method=RequestMethod.GET)
 	public String addLocation(@PathVariable Long id, @RequestParam(value="latitude", required=false) Double latitude, 
 			@RequestParam(value="longitude", required=false) Double longitude,
@@ -47,7 +61,7 @@ public class LocationController {
 		
 		log.info("methode get pour ajouter une localisation");
 		
-		//chargement de la localisation relative à la victime
+		//chargement de la localisation relative Ã  la victime
 		Long location_id = locationDAO.GetLocationIdFromVictimId(id);
 		if(location_id!=null) {
 			location = locationDAO.findOne(location_id);
@@ -72,8 +86,24 @@ public class LocationController {
 		return "location/addLocation";
 	}
 	
+	/**
+	 * methode POST pour ajouter une localisation
+	 * @param id
+	 * 		id de la victime
+	 * @param toMaps
+	 * 		si="ok", indique qu'on doit Ãªtre redirigÃ© vers la carte pour insÃ©rer latitude et longitude
+	 * @param location
+	 * 		
+	 * @param errors
+	 * 		erreurs Ã©ventuelles de validation du formulaire
+	 * 		
+	 * @param model
+	 * @param rModel
+	 * 		pour que les attributs du modele survivent Ã  la redirection
+	 * @return
+	 * 		redirige vers la page jsp pour voir les infos de la localisation
+	 */
 	
-	//methode POST pour ajouter une localisation
 	@RequestMapping(value="/{id}/add", method = RequestMethod.POST)
 	public String addLocationPost(@PathVariable Long id, @RequestParam(value="toMaps", required=false)String toMaps,@Valid Location location, BindingResult errors, Model model,
 					RedirectAttributes rModel) {
@@ -101,7 +131,15 @@ public class LocationController {
 		}
 	}
 	
-	//methode GET pour afficher les détails d'une localisation
+	/**
+	 * methode GET pour afficher les details d'une localisation
+	 * @param id
+	 * 		id de la localisation
+	 * @param model
+	 * @return
+	 * 		retourne la page jsp de details d'une localisation
+	 */
+	
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public String infosLocation(@PathVariable Long id, Model model) {
 		
@@ -113,7 +151,19 @@ public class LocationController {
 		return "location/location";
 	}
 	
-	//methode GET pour updater une localisation - id de la localisation
+	/**
+	 * methode GET pour updater une localisation
+	 * @param id
+	 * 		id de la localisation
+	 * @param latitude
+	 * 		latitude de la localisation (si on vient de la carte)
+	 * @param longitude
+	 * 		longitude de la localisation (si on vient de la carte)
+	 * @param model
+	 * @return
+	 * 		retourne la page jsp pour modifier la localisation
+	 */
+	
 	@RequestMapping(value="{id}/update", method=RequestMethod.GET)
 	public String localisationUpdateGet(@PathVariable Long id, @RequestParam(value="latitude", required=false) Double latitude,
 			@RequestParam(value="longitude", required=false)Double longitude, Model model) {
@@ -121,7 +171,7 @@ public class LocationController {
 		
 		//verifie si la localisation existe
 		if(!locationDAO.exists(id))
-			throw new NotFoundException("localisation non trouvée pour update", id);
+			throw new NotFoundException("localisation non trouvÃ©e pour update", id);
 		
 		//recherche id de la victime
 		Long victim_id = locationDAO.GetVictimIdFromLocationId(id);
@@ -166,15 +216,22 @@ public class LocationController {
 			
 	}
 	
-	//methode POST pour supprimer une localisation
+	/**
+	 * methode POST pour supprimer une localisation
+	 * @param id
+	 * 		id de la localisation Ã  supprimer
+	 * @return
+	 * 		redirige sur la page jsp de liste des victimes
+	 */
+	
 	@RequestMapping(value="{id}/delete", method=RequestMethod.POST)
 	public String locationDeletePost(@PathVariable Long id) {
 		log.info("methode POST pour effacer une victime");
 		//verifie si la localisation existe
 		if(!locationDAO.exists(id))
-			throw new NotFoundException("localisation non trouvée ", id);
+			throw new NotFoundException("localisation non trouvï¿½e ", id);
 		try {
-			//suppression de la localisation sur les victimes concernées
+			//suppression de la localisation sur les victimes concernï¿½es
 			List<Victim> listVictims = victimDAO.getVictimsFromLocation(id);
 			for(Victim victim : listVictims){
 				victim.setLocation(null);
@@ -183,7 +240,7 @@ public class LocationController {
 			locationDAO.delete(id);
 		}catch (DataIntegrityViolationException e) {
 			log.error("SQL", e);
-			throw new NoAccessException("suppression impossible: cette localisation possède des dépendances");
+			throw new NoAccessException("suppression impossible: cette localisation possï¿½de des dï¿½pendances");
 		}
 		log.info("suppression de la localisation " + id );
 		return "redirect:/victim/list";

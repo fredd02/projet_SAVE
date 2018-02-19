@@ -21,6 +21,7 @@
 <s:message code="language" var="language"/>
 <s:message code="SelectLanguage" var="selectLanguage"/>
 <s:message code="selectSex" var="selectSex" />
+<s:message code="virtual.panel" var ="virtualPanel" />
 
 
 <sf:form method="POST" class="well form-horizontal" modelAttribute="victim" action="add">
@@ -128,6 +129,35 @@
 				</div>
 			</div>
 		</s:bind>
+		
+		<s:bind path="virtualPanel">
+		
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<sf:label path="virtualPanel" class="col-md-4 form-control-label">
+					${virtualPanel}
+					
+				</sf:label>
+				
+				<sf:checkbox path="virtualPanel" value="1" class="form-check-input" />
+				
+					
+					<sf:errors path="virtualPanel" class="control-label" />
+				
+			</div>
+		</s:bind>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		<div class="form-group">
 			<label class="col-md-4 control-label"></label>

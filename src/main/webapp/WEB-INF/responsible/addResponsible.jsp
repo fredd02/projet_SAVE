@@ -127,7 +127,7 @@
 			<sf:label path="connection" class="col-md-4 control-label"><s:message code="victimConnection" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				<span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
 				<sf:input path="connection" id="connection" class="form-control" placeholder="connection" />
 				<sf:errors path="connection" class="control-label" />
 			</div>

@@ -67,6 +67,9 @@ public class Victim {
 	@JoinColumn(name="FKLocation")
 	private Location location;
 	
+	@Column
+	private Integer virtualPanel;
+	
 	@ManyToMany
 	@JoinTable(name="victimeResponsible", joinColumns= @JoinColumn(name="FKVictim"),
 			inverseJoinColumns= @JoinColumn(name="FKResponsible"))
@@ -162,6 +165,16 @@ public class Victim {
 	public void setLanguage(LANGUAGE language) {
 		this.language = language;
 	}
+
+	public Integer getVirtualPanel() {
+		return virtualPanel;
+	}
+
+	public void setVirtualPanel(Integer virtualPanel) {
+		this.virtualPanel = virtualPanel;
+	}
+
+	
 	
 	
 	

@@ -34,7 +34,14 @@ public class VictimController {
 	@Autowired
 	IVictimRepository victimDAO;
 	
-	//methode GET pour afficher la liste des victimes
+	
+	/**
+	 * methode GET pour afficher la liste des victimes
+	 * @param model
+	 * 		model transmis Ã  la page jsp
+	 * @return
+	 * 		retourne le chemin de la page jsp qui affiche la liste
+	 */
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String victimList(Model model) {
@@ -111,12 +118,12 @@ public class VictimController {
 		log.info("methode POST pour supprimer une victime");
 		//verifie si la victime existe
 		if(!victimDAO.exists(id)) 
-			throw new NotFoundException("victime non trouvée pour suppression ",id);
+			throw new NotFoundException("victime non trouvï¿½e pour suppression ",id);
 		try {
 			victimDAO.delete(id);
 		} catch (DataIntegrityViolationException e) {
 			log.error("SQL", e);
-			throw new NoAccessException(" Suppression impossible: cette victime possède des dépendances");
+			throw new NoAccessException(" Suppression impossible: cette victime possï¿½de des dï¿½pendances");
 			
 		}
 		log.info("suppression de la victime: " + id);
@@ -130,7 +137,7 @@ public class VictimController {
 		log.info("methode GET pour updater une victime");
 		//verifie si la victime existe
 		if(!victimDAO.exists(id))
-			throw new NotFoundException("victime non trouvée pour update ", id);
+			throw new NotFoundException("victime non trouvÃ©e pour update ", id);
 		
 		Victim victim = victimDAO.getOne(id);
 		model.addAttribute("victim", victim);
