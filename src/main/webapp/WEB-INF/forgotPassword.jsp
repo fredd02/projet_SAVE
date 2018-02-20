@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Log in with your account</title>
+    <title>forgotPassword</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -29,35 +29,32 @@
 </head>
 
 <body>
-<s:message code="Username" var="Username" />
-<s:message code="Password" var="Password" />
-
-<div class="container">
-<img src="<s:url value="/resources/img/logo_save.svg" />" width="50" height="50"
+	<div class="container">
+	<img src="<s:url value="/resources/img/logo_save.svg" />" width="50" height="50"
 					class="img-responsive center-block" />
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading text-center">SAVE - <s:message code="Login" /></h2>
-        <br>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="${Username}"
-                   autofocus/>
-            <input name="password" type="password" class="form-control" placeholder="${Password}"/>
-            <span>${error}</span>
-<!--             protection contre les attaques CSRF -->
+	
+	<form method="POST" action="${contextPath}/forgot" class="form-signin">
+	<h2 class="form-signin-heading"><s:message code="password.forgot" /></h2>
+	<s:message code="password.forgot.email" /><br><br>
+	
+		<div class="form-group">
+			<label for="email"><s:message code="mail" /></label>
+			<input name="email" class="form-control" id="email" autofocus placeholder="email"/>
+		</div>
+		
+		<!--             protection contre les attaques CSRF -->
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
+		
+		<button type="submit" class="btn btn-primary"><s:message code="send" /></button>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration"><s:message code="account.create" /></a></h4>
-            <h4 class="text-center"><a href="${contextPath}/forgot"><s:message code="password.forgot" /></a></h4>
-        </div>
+	</form>
+	<div class="text-center">
+	<c:out value="${successMessage}" />
+	</div>
+	
+	
+	</div>
 
-    </form>
-
-</div>
-<!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>

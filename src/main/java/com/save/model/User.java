@@ -2,6 +2,7 @@ package com.save.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity(name="users")
 public class User {
 	
@@ -18,9 +22,19 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO	)
 	private Long id;
 	
+	@Column(nullable=false, unique=true)
 	private String username;
 	
+	@Column(nullable=false)
 	private String password;
+	
+	@Column(unique=true)
+	@Email(message="provide a valid e-mail")
+	//@NotEmpty(message="provide an email")
+	private String email;
+	
+	@Column
+	private String resetToken;
 	
 	@Transient
 	private String passwordConfirm;
@@ -71,6 +85,22 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
 	}
 	
 	

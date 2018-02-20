@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -29,14 +31,25 @@
 <body>
 
 <div class="container">
+	<img src="<s:url value="/resources/img/logo_save.svg" />" width="50" height="50"
+					class="img-responsive center-block" />
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
         <h2 class="form-signin-heading">Create your account</h2>
+       
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="username" class="form-control" placeholder="Username"
                             autofocus="true"></form:input>
                 <form:errors path="username"></form:errors>
+            </div>
+        </spring:bind>
+        
+        <spring:bind path="email">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="email" path="email" class="form-control" placeholder="email" />
+                
+                <form:errors path="email"></form:errors>
             </div>
         </spring:bind>
 

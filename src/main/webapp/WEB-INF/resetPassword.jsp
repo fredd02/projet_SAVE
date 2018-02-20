@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Log in with your account</title>
+    <title>forgotPassword</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -29,35 +29,49 @@
 </head>
 
 <body>
-<s:message code="Username" var="Username" />
-<s:message code="Password" var="Password" />
-
-<div class="container">
-<img src="<s:url value="/resources/img/logo_save.svg" />" width="50" height="50"
+	<div class="container">
+	<img src="<s:url value="/resources/img/logo_save.svg" />" width="50" height="50"
 					class="img-responsive center-block" />
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading text-center">SAVE - <s:message code="Login" /></h2>
-        <br>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="${Username}"
-                   autofocus/>
-            <input name="password" type="password" class="form-control" placeholder="${Password}"/>
-            <span>${error}</span>
-<!--             protection contre les attaques CSRF -->
+	
+		<form method="POST" action="${contextPath}/reset" onsubmit="return pwValidate()" class="form-signin">
+			<h4 class="form-heading text-center"> <s:message code="password.new" /></h4>
+        	<br>
+			<div class="form-group">
+				<label for="password"><s:message code="Password" />:</label>
+				<input name="password" type="password" class="form-control" id="password">
+			</div>
+			
+			<div class="form-group">
+				<label for="passwordConfirm"><s:message code="password.confirm" />:</label>
+				<input name="passwordConfirm" type="password" class="form-control" id="passwordConfirm">
+			</div>
+			
+			
+			
+		<!--             protection contre les attaques CSRF -->
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
+            
+            <input type="hidden" name="token" value="${resetToken}" />
+		<button type="submit" class="btn btn-primary"><s:message code="send" /></button>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration"><s:message code="account.create" /></a></h4>
-            <h4 class="text-center"><a href="${contextPath}/forgot"><s:message code="password.forgot" /></a></h4>
-        </div>
+	</form>
+	
+	</div>
+<script>
+	function pwValidate(){
+		var password = document.getElementById("password").value;
+		var passwordConfirm = document.getElementById("passwordConfirm").value;
+		var ok =true;
+		if(password != passwordConfirm){
+			document.getElementById("password").style.borderColor = "#E34234";
+			document.getElementById("passwordConfirm").style.borderColor = "#E34234";
+			//confirmPassword.setCustomValidity("Passwords don't match");
+			ok=false;
+		}
+		return ok;
+	}
 
-    </form>
-
-</div>
-<!-- /container -->
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>

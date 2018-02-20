@@ -43,5 +43,17 @@ public class UserValidator implements Validator{
 			
 		
 	}
+	
+	public void validatePwd(String password, String passwordConfirm, Errors errors) {
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+		if(password.length()<5 || password.length()>32) {
+			errors.rejectValue("password", "Size.userForm.password");
+		}
+		
+		if(!passwordConfirm.equals(password)) {
+			errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+		}
+	}
 
 }

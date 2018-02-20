@@ -1,6 +1,7 @@
 package com.save.service;
 
 import java.util.HashSet;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,6 +33,16 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);
+	}
+
+	@Override
+	public Optional<User> findUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
+	@Override
+	public Optional<User> findUserByResetToken(String resetToken) {
+		return userRepository.findByResetToken(resetToken);
 	}
 
 }
