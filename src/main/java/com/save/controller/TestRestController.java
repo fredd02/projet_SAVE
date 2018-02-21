@@ -35,6 +35,13 @@ public class TestRestController {
 		return victim;
 		
 	}
+	
+	/**
+	 * methode qui renvoie la liste des victimes qui ont paramètres latitude et longitude (pour affichage google maps)
+	 * @return
+	 * 		fichier JSON avec la liste des victimes
+	 */
+	
 	@CrossOrigin(origins= "http://localhost:8383")
 	@RequestMapping("/stars")
 	public List<Star> listStars(){
@@ -44,9 +51,9 @@ public class TestRestController {
 		Star star_temp;
 		
 		for(Victim v: list	) {
-			log.info("nom de la victime: " + v.getFirstname());
+			//log.info("nom de la victime: " + v.getFirstname());
 			star_temp = new Star(v);
-			log.info("nom de la star: " + star_temp.getFirstname());
+			//log.info("nom de la star: " + star_temp.getFirstname());
 			log.info(star_temp.toString());
 			StarList.add(new Star(v));
 		}

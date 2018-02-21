@@ -145,6 +145,9 @@
 			</div>
 		</s:bind>
 		
+		<sf:input type="hidden" path="location" />
+		<sf:input type="hidden" path="responsibles" />
+		
 		<div class="form-group">
 			<label class="col-md-4 control-label"></label>
   			<div class="col-md-4"><br>

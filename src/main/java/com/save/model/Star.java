@@ -20,9 +20,13 @@ public class Star {
 	
 	private Date accidentDate;
 	
+	private String Language;
+	
 	private Double latitude;
 	
 	private Double longitude;
+	
+	private Integer virtualPanel;
 	
 	
 
@@ -32,14 +36,16 @@ public class Star {
 
 
 
-	public Star(String firstname, String lastname, Integer age, Date accidentDate, Double latitude, Double longitude) {
+	public Star(String lastname, Integer age, Date accidentDate, Double latitude, Double longitude,String language, Integer virtualPanel) {
 		super();
-		this.firstname = firstname;
+		
 		this.lastname = lastname;
 		this.age = age;
 		this.accidentDate = accidentDate;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.Language = language;
+		this.virtualPanel = virtualPanel;
 	}
 
 
@@ -114,13 +120,41 @@ public class Star {
 		this.longitude = longitude;
 	}
 	
+	
+	
+	public String getLanguage() {
+		return Language;
+	}
+
+
+
+	public void setLanguage(String language) {
+		Language = language;
+	}
+
+
+
+	public Integer getVirtualPanel() {
+		return virtualPanel;
+	}
+
+
+
+	public void setVirtualPanel(Integer virtualPanel) {
+		this.virtualPanel = virtualPanel;
+	}
+
+
+
 	public Star(Victim victim) {
-		this.firstname = victim.getFirstname();
+		//this.firstname = victim.getFirstname();
 		this.lastname = victim.getLastname();
 		this.age = getAge(victim.getBirthdate(), victim.getAccidentdate());
-		this.accidentDate = victim.getAccidentdate();
+		//this.accidentDate = victim.getAccidentdate();
 		this.latitude = victim.getLocation().getLatitude();
 		this.longitude = victim.getLocation().getLongitude();
+		this.Language = (victim.getLanguage() == null ? "ENGLISH" : victim.getLanguage().toString());
+		this.virtualPanel = victim.getVirtualPanel();
 	}
 	
 	public Integer getAge(Date d1, Date d2) {
