@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	//logger
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+			private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String home() {

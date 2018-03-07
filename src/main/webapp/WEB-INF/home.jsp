@@ -7,7 +7,7 @@
 <html>
 
 <jsp:include page="fragments/header.jsp">
-	<jsp:param name="titre" value="Home page Résultats ISFCE" />
+	<jsp:param name="titre" value="Home page Projet SAVE" />
 </jsp:include>
 
 <div class="container">
