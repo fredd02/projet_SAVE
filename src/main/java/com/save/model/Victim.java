@@ -33,8 +33,8 @@ public class Victim {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotEmpty
-	@Size(min=2, max=30, message="{victim.firstname}")
+	
+	//@Size(min=2, max=30, message="{victim.firstname}")
 	@Column
 	private String firstname;
 	
@@ -43,20 +43,26 @@ public class Victim {
 	@Column
 	private String lastname;
 	
+	@Column
+	private Integer age;
+	
+	@Column
+	private Integer month;
+	
 	//@NotNull
 	//@Pattern(regexp="^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message="{date.valid}")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column
 	private Date birthdate;
 	
-	@NotNull
+	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column
 	private Date accidentdate;
 	
-	@NotNull
-	@Min(value=0)
-	@Max(value=1)
+	
+	@Min(value=0) //for M
+	@Max(value=1) // for F
 	@Column
 	private Integer sex;
 	
@@ -110,6 +116,24 @@ public class Victim {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	
+	
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getMonth() {
+		return month;
+	}
+
+	public void setMonth(Integer month) {
+		this.month = month;
 	}
 
 	public Date getBirthdate() {

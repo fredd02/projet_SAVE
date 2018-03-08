@@ -11,7 +11,7 @@
 <jsp:include page="../fragments/header.jsp">
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
-<s:message code="Birthdate" var="Birthdate"/>
+<s:message code="age" var="age"/>
 <s:message code="Firstname" var="Firstname"/>
 <s:message code="Lastname" var="Lastname"/>
 <s:message code="AccidentDate" var="AccidentDate"/>
@@ -58,18 +58,18 @@
 		</div>
 	</s:bind>
 	
-	<s:bind path="birthdate">
+	<s:bind path="age">
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<sf:label path="birthdate" class="col-md-4 control-label">
-					${Birthdate}
+				<sf:label path="age" class="col-md-4 control-label">
+					${age}
 				</sf:label>
 				<div class="col-md-4 inputGroupContainer">
-				<div class="input-group" id="datetimepicker">
+				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					
-					<sf:input path="birthdate" id="birthdate" class="form-control"
-						placeholder="${Birthdate}" />
-					<sf:errors path="birthdate" class="control-label" />
+					<sf:input path="age" id="age" class="form-control"
+						placeholder="${age}" />
+					<sf:errors path="age" class="control-label" />
 				</div>
 				</div>
 			</div>

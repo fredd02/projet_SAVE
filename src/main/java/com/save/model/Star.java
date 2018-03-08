@@ -12,13 +12,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Star {
 	
-	private String firstname;
+	
 	
 	private String lastname;
 	
 	private Integer age;
 	
-	private Date accidentDate;
+	
 	
 	private String Language;
 	
@@ -36,12 +36,12 @@ public class Star {
 
 
 
-	public Star(String lastname, Integer age, Date accidentDate, Double latitude, Double longitude,String language, Integer virtualPanel) {
+	public Star(String lastname, Integer age, Double latitude, Double longitude,String language, Integer virtualPanel) {
 		super();
 		
 		this.lastname = lastname;
 		this.age = age;
-		this.accidentDate = accidentDate;
+		
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.Language = language;
@@ -50,17 +50,7 @@ public class Star {
 
 
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-
+	
 
 	public String getLastname() {
 		return lastname;
@@ -84,17 +74,17 @@ public class Star {
 		this.age = age;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd/MM/yyyy", timezone="IST")
-	public Date getAccidentDate() {
-		return accidentDate;
-	}
+//	@Temporal(TemporalType.DATE)
+//	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd/MM/yyyy", timezone="IST")
+//	public Date getAccidentDate() {
+//		return accidentDate;
+//	}
 
 
 
-	public void setAccidentDate(Date accidentDate) {
-		this.accidentDate = accidentDate;
-	}
+//	public void setAccidentDate(Date accidentDate) {
+//		this.accidentDate = accidentDate;
+//	}
 
 
 
@@ -149,7 +139,7 @@ public class Star {
 	public Star(Victim victim) {
 		//this.firstname = victim.getFirstname();
 		this.lastname = victim.getLastname();
-		this.age = getAge(victim.getBirthdate(), victim.getAccidentdate());
+		this.age = victim.getAge();
 		//this.accidentDate = victim.getAccidentdate();
 		this.latitude = victim.getLocation().getLatitude();
 		this.longitude = victim.getLocation().getLongitude();
@@ -170,8 +160,7 @@ public class Star {
 
 	@Override
 	public String toString() {
-		return "Star [firstname=" + firstname + ", lastname=" + lastname + ", age=" + age + ", accidentDate="
-				+ accidentDate + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+		return "Star [lastname=" + lastname + ", age=" + age + " latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 	
 	

@@ -56,7 +56,15 @@ public class VictimController {
 		return "victim/victimsList";
 	}
 	
-	//methode GET pour encoder une victime
+	/**
+	 * methode GET pour ajouter une victime
+	 * @param victim
+	 * 		instance de Victim
+	 * @param model
+	 * 		model contenant victim à passer à la vue
+	 * @return
+	 * 		vue jsp pour encoder une victime
+	 */
 	
 	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String victimAddGet(@ModelAttribute Victim victim, Model model) {
@@ -89,8 +97,16 @@ public class VictimController {
 				}
 		
 	}
+	/**
+	 * methode GET pour afficher les infos d'une victime
+	 * @param id
+	 * 		id de la victime
+	 * @param model
+	 * 		modèle qui va contenir les infos de la victime
+	 * @return
+	 * 		page jsp avec infos de la victime
+	 */
 	
-	//methode GET pour afficher les infos d'une victime
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public String victim(@PathVariable Long id, Model model) {
 		
@@ -155,6 +171,7 @@ public class VictimController {
 			
 			//gestion de la validation
 			if(errors.hasErrors()) {
+				log.info("erreurs de validation pour l'update: " + errors.toString());
 				return "victim/"+id+"/update";
 			}else {
 				Victim victim_updat = victimDAO.save(victim);

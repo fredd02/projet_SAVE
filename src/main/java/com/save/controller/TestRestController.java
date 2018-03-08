@@ -45,8 +45,10 @@ public class TestRestController {
 	@CrossOrigin(origins= "http://localhost:8383")
 	@RequestMapping("/stars")
 	public List<Star> listStars(){
+		log.info("methode REST pour afficher toutes les victimes");
 		//liste des victimes ayant param Latitude et longitude
 		List<Victim> list = victimDAO.getVictimsWithLatLong();
+		log.info(list.get(0).getLastname());
 		List<Star> StarList = new ArrayList<>();
 		Star star_temp;
 		

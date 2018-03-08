@@ -12,7 +12,7 @@
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
 <div class="container">
-<h2>Modifier la localisation de la victime <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
+<h2><s:message code="modify.location" /> <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
 
 <br>
 

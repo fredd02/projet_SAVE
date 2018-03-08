@@ -23,9 +23,9 @@
 <ul class="well list-group col-md-6 col-md-offset-3">
   <li class="list-group-item"><b><s:message code="Firstname"/>: </b><c:out value="${victim.firstname}" /></li>
   <li class="list-group-item"><b><s:message code="Lastname"/>: </b><c:out value="${victim.lastname}" /></li>
-  <li class="list-group-item"><b><s:message code="Birthdate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.birthdate}"/></li>
+  <li class="list-group-item"><b><s:message code="age"/>: </b><c:out value="${victim.age}" /></li>
   <li class="list-group-item"><b><s:message code="AccidentDate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
-  <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? male : female}" /></li>
+  <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? male : victim.sex ==1 ? female : ''}" /></li>
   <li class="list-group-item"><b><s:message code="language"/>: </b><c:out value="${victim.language}" /></li>
   <li class="list-group-item"><b><s:message code="virtual.panel"/>: </b><c:out value="${victim.virtualPanel == 1 ? yes : no}" /></li>
   <li class="list-group-item text-center"> <div class="btn-group">

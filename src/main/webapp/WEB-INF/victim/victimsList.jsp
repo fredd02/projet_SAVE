@@ -22,7 +22,7 @@
 	<tr>
 		<th><s:message code="Firstname"/></th>
 		<th><s:message code="Lastname"/></th>
-		<th><s:message code="Birthdate"/></th>
+		<th><s:message code="age"/></th>
 		<th><s:message code="AccidentDate"/></th>
 		<th><s:message code="sex"/></th>
 		<th><s:message code="AccidentLocation"/></th>
@@ -37,14 +37,9 @@
 		<tr>
 			<td><c:out value="${victim.firstname}" /></td>
 			<td><c:out value="${victim.lastname}" /></td>
-			<td align="center"><fmt:formatDate value="${victim.birthdate}" pattern="dd/MM/yyyy" /></td>
+			<td align="center"><c:out value="${victim.age}" /></td>
 			<td align="center"><fmt:formatDate value="${victim.accidentdate}" pattern="dd/MM/yyyy" /></td>
-			<td align="center"><c:choose>
-				<c:when test="${victim.sex ==0}">M
-				</c:when>
-				<c:otherwise>F</c:otherwise>
-				
-			</c:choose></td>
+			<td align="center"><c:out value= "${victim.sex == 0 ? M : victim.sex == 1 ? F : '' }" /></td>
 			<td align="center">
 				<c:if test="${!empty victim.location}">
 					<span class="glyphicon glyphicon-ok" ></span>
