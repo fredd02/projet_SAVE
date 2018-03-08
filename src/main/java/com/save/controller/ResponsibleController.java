@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.save.model.Responsible;
@@ -163,29 +164,31 @@ public class ResponsibleController {
 	
 	//methode POST pour supprimer un responsable
 	@RequestMapping(value="/{id}/delete", method=RequestMethod.POST)
-	public String responsibleDeletePost(@PathVariable Long id) {
+	public String responsibleDeletePost(@PathVariable Long id, @RequestParam String victim_id) {
 		
 		log.info("methode POST pour supprimer un responsable");
+		log.info("id de la victime: " + victim_id);
 		//verifie si le responsable existe
 		if(!responsibleDAO.exists(id))
-			throw new NotFoundException("responsable non trouv� pour suppression", id);
+			throw new NotFoundException("responsable non trouvé pour suppression", id);
 		
 		//suppression du lien avec la victime
 		List<Victim> listVictimsFromResponsible = victimDAO.getVictimFromResponsible(id);
 		Iterator i = listVictimsFromResponsible.iterator();
 		while(i.hasNext()) {
 			Victim v = (Victim)i.next();
-			v.setResponsibles(null);
+			v.deleteResponsible(responsibleDAO.findOne(id));
 		}
 			
 		try {
 			responsibleDAO.delete(id);
 		} catch (DataIntegrityViolationException e) {
 			log.error("SQL", e);
-			throw new NoAccessException("Suppression impossible: ce responsable poss�de des d�pendances");
+			throw new NoAccessException("Suppression impossible: ce responsable possède des dépendances");
 		}
 		log.info("suppression du responsable: " + id);
-		return "redirect:/victim/list";
+		Integer id_vict = Integer.parseInt(victim_id);
+		return "redirect:/victim/" + id_vict;
 	}
 
 }

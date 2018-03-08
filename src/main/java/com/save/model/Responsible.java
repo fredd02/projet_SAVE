@@ -5,13 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class Responsible {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="responsible_generator")
+	@SequenceGenerator(name="responsible_generator", sequenceName="responsible_seq", allocationSize=1)
 	private Long id;
 	
 	@NotNull
@@ -164,13 +166,6 @@ public class Responsible {
 	public void setConnection(String connection) {
 		this.connection = connection;
 	}
-	
-	
-
-
-	
-	
-	
 	
 	
 

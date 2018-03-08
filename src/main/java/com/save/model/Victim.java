@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -30,7 +31,8 @@ public class Victim {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="victim_generator")
+	@SequenceGenerator(name="victim_generator", sequenceName="victim_seq", allocationSize=1)
 	private Long id;
 	
 	
@@ -43,6 +45,8 @@ public class Victim {
 	@Column
 	private String lastname;
 	
+	@Min(value=0, message="{victim.age}")
+	@Max(value=99, message="{victim.age}")
 	@Column
 	private Integer age;
 	
@@ -180,6 +184,10 @@ public class Victim {
 
 	public void addResponsible(Responsible responsible) {
 		responsibles.add(responsible);
+	}
+	
+	public void deleteResponsible(Responsible responsible) {
+		responsibles.remove(responsible);
 	}
 
 	public LANGUAGE getLanguage() {

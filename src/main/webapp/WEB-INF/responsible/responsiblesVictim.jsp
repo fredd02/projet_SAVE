@@ -46,7 +46,7 @@
 				onclick="
 				if (confirm('Suppression du contact  ?')) {
 				 this.disabled=true;
-                 post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}'})}                             
+                 post('${deleteUrl}',{'${_csrf.parameterName}': '${_csrf.token}', victim_id : '${victim.id}'})}                             
                                               "><s:message code="delete" /></button>
 			
 			</td>
@@ -57,6 +57,8 @@
 	</tbody>
 	
 </table>
+<s:url value="/responsible/${victim.id}/add" var="addContactUrl" />
+<button type="button" class="btn btn-primary" onclick="location.href='${addContactUrl}'"><s:message code="addResponsible" /></button>
 
 </div>
 
