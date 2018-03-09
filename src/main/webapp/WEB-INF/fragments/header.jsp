@@ -50,6 +50,7 @@
 				<li class="active"><a href="<s:url value="/"/>">Home</a></li>
 				<li><a href="${contextPath}/victim/add"><s:message code="victimEncode"/></a></li>
 				<li><a href="${contextPath}/victim/list"><s:message code="victimListSee"/></a></li>
+				<li><a href="${contextPath}/starlight"><s:message code="starlight"/></a></li>
 				
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"><s:message code="menu.langue" /><span class="caret"></span></a>

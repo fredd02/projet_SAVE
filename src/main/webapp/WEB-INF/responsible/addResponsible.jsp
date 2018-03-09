@@ -24,9 +24,10 @@
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" />
-				<sf:errors path="firstname" class="control-label" />
+				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" autofocus/>
+				
 			</div>
+			<sf:errors path="firstname" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -38,8 +39,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				<sf:input path="lastname" id="lastname" class="form-control" placeholder="lastname" />
-				<sf:errors path="lastname" class="control-label" />
+				
 			</div>
+			<sf:errors path="lastname" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -51,8 +53,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 				<sf:input path="postCode" id="postCode" class="form-control" placeholder="postCode" />
-				<sf:errors path="postCode" class="control-label" />
+				
 			</div>
+			<sf:errors path="postCode" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -64,8 +67,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 				<sf:input path="city" id="city" class="form-control" placeholder="city" />
-				<sf:errors path="city" class="control-label" />
+				
 			</div>
+			<sf:errors path="city" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -77,8 +81,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 				<sf:input path="street" id="street" class="form-control" placeholder="street" />
-				<sf:errors path="street" class="control-label" />
+				
 			</div>
+			<sf:errors path="street" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -90,8 +95,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
 				<sf:input path="number" id="number" class="form-control" placeholder="number" />
-				<sf:errors path="number" class="control-label" />
+				
 			</div>
+			<sf:errors path="number" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -103,8 +109,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 				<sf:input path="email" id="number" class="form-control" placeholder="email" />
-				<sf:errors path="email" class="control-label" />
+				
 			</div>
+			<sf:errors path="email" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -116,8 +123,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 				<sf:input path="phone" id="phone" class="form-control" placeholder="phone" />
-				<sf:errors path="phone" class="control-label" />
+				
 			</div>
+			<sf:errors path="phone" class="control-label" />
 			</div>
 			</div>
 	</s:bind>
@@ -129,8 +137,9 @@
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
 				<sf:input path="connection" id="connection" class="form-control" placeholder="connection" />
-				<sf:errors path="connection" class="control-label" />
+				
 			</div>
+			<sf:errors path="connection" class="control-label" />
 			</div>
 			</div>
 	</s:bind>

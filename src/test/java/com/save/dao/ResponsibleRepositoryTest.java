@@ -42,9 +42,9 @@ public class ResponsibleRepositoryTest {
 		Date date2 = new Date(12/12/2010);
 		Victim victim = new Victim("TEST01","test01",date1,date2,0);
 		Victim victim02 =  new Victim("TEST02", "test02",date1,date2,0);
-		Responsible contact01 = new Responsible("CONTACT01","contact01",1000, "Bruxelles","rue Haute",1,"contact010gmail.com","01234");
-		Responsible contact02 = new Responsible("CONTACT02","contact02",1000, "Bruxelles","rue Haute",2,"contact010gmail.com","01234");
-		Responsible contact03 = new Responsible("CONTACT03","contact03",1000, "Bruxelles","rue Haute",2,"contact010gmail.com","01234");
+		Responsible contact01 = new Responsible("CONTACT01","contact01",1000, "Bruxelles","rue Haute",1,"contact01@gmail.com","01234");
+		Responsible contact02 = new Responsible("CONTACT02","contact02",1000, "Bruxelles","rue Haute",2,"contact01@gmail.com","01234");
+		Responsible contact03 = new Responsible("CONTACT03","contact03",1000, "Bruxelles","rue Haute",2,"contact01@gmail.com","01234");
 		entityManager.persist(contact01);
 		entityManager.persist(contact02);
 		entityManager.persist(contact03);

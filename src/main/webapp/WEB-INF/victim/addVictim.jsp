@@ -37,9 +37,11 @@
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<sf:input path="firstname" id="firstname" class="form-control" placeholder="${Firstname}" />
-					<sf:errors path="firstname" class="control-label" />
+					<sf:input path="firstname" id="firstname" class="form-control" placeholder="${Firstname}" 
+						 autofocus="autofocus"/>
+					
 				</div>
+				<sf:errors path="firstname" class="control-label" />
 			</div>
 		</div>
 	</s:bind>
@@ -47,14 +49,15 @@
 	<s:bind path="lastname">
 		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="lastname" class="col-md-4 control-label">
-				${Lastname}
+				${Lastname} *
 			</sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<sf:input path="lastname" id="lastname" class="form-control" placeholder="${Lastname}" />
-				<sf:errors path="lastname" class="control-label" />
+				<sf:input path="lastname" id="lastname" class="form-control" placeholder="${Lastname}" required="required"/>
+				
 				</div>
+				<sf:errors path="lastname" class="control-label" />
 			</div>
 		</div>
 	</s:bind>
@@ -70,8 +73,9 @@
 					
 					<sf:input path="age" id="age" class="form-control"
 						placeholder="${age}" />
-					<sf:errors path="age" class="control-label" />
+					
 				</div>
+				<sf:errors path="age" class="control-label" />
 				</div>
 			</div>
 		</s:bind>
@@ -86,8 +90,9 @@
 					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 					<sf:input path="accidentdate" id="accidentdate" class="form-control"
 						placeholder="${AccidentDate}"/>
-					<sf:errors path="accidentdate" class="control-label" />
+					
 				</div>
+				<sf:errors path="accidentdate" class="control-label" />
 				</div>
 			</div>
 		</s:bind>
@@ -105,8 +110,9 @@
 						<sf:option value="0"><s:message code="male" /></sf:option>
 						<sf:option value="1"><s:message code="female" /></sf:option>
 					</sf:select>
-					<sf:errors path="sex" class="control-label" />
+					
 				</div>
+				<sf:errors path="sex" class="control-label" />
 				</div>
 			</div>
 		</s:bind>

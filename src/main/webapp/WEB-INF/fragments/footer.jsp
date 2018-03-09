@@ -13,8 +13,10 @@
 
 <s:url value="/resources/js/bootstrap.min.js" var="BootstrapJs" />
 <s:url value="/resources/js/monApplication.js" var="MyAppJs" />
+<s:url value="/resources/js/map_style.js" var="mapStyle" />
 
 <script src="${BootstrapJs}"></script>
 <script src="${MyAppJs}"></script>
+<script src="${mapStyle}"></script>
 
 </body>
