@@ -19,8 +19,8 @@
 	<sf:errors path="*" element="div" cssClass="alert alert-danger" />
 	
 	<s:bind path="firstname">
-		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="firstname" class="col-md-4 control-label"><s:message code="Firstname" /></sf:label>
+		<div class="form-group ${status.error ? 'has-error' : ''}">
+			<sf:label path="firstname" class="col-md-4 control-label"><s:message code="Firstname" /> *</sf:label>
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -32,8 +32,8 @@
 	</s:bind>
 	
 	<s:bind path="lastname">
-		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="lastname" class="col-md-4 control-label"><s:message code="Lastname" /></sf:label>
+		<div class="form-group ${status.error ? 'has-error' : ''}">
+			<sf:label path="lastname" class="col-md-4 control-label"><s:message code="Lastname" /> *</sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -45,7 +45,7 @@
 	</s:bind>
 	
 	<s:bind path="postCode">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="postCode" class="col-md-4 control-label"><s:message code="postCode" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
@@ -58,7 +58,7 @@
 	</s:bind>
 	
 	<s:bind path="city">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="city" class="col-md-4 control-label"><s:message code="city" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
@@ -71,7 +71,7 @@
 	</s:bind>
 	
 	<s:bind path="street">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="street" class="col-md-4 control-label"><s:message code="street" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
@@ -84,7 +84,7 @@
 	</s:bind>
 	
 	<s:bind path="number">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="number" class="col-md-4 control-label"><s:message code="number" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
@@ -97,8 +97,8 @@
 	</s:bind>
 	
 	<s:bind path="email">
-		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="email" class="col-md-4 control-label"><s:message code="mail" /></sf:label>
+		<div class="form-group ${status.error ? 'has-error' : ''}">
+			<sf:label path="email" class="col-md-4 control-label"><s:message code="mail" /> *</sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -110,7 +110,7 @@
 	</s:bind>
 	
 	<s:bind path="phone">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="phone" class="col-md-4 control-label"><s:message code="phone" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">
@@ -123,7 +123,7 @@
 	</s:bind>
 	
 	<s:bind path="connection">
-		<div class="form-group ${status.error ? has-error : ''}">
+		<div class="form-group ${status.error ? 'has-error' : ''}">
 			<sf:label path="connection" class="col-md-4 control-label"><s:message code="victimConnection" /></sf:label>
 			<div class="col-md-4 inputGroupContainer">
 			<div class="input-group">

@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Responsible {
@@ -17,12 +21,15 @@ public class Responsible {
 	private Long id;
 	
 	@NotNull
+	@Size(min=2, max=30, message="{victim.firstname}")
 	@Column
 	private String firstname;
 	
 	@NotNull
+	@Size(min=2, max=30, message="{victim.lastname}")
 	@Column
 	private String lastname;
+	
 	
 	@Column
 	private Integer postCode;
@@ -37,6 +44,8 @@ public class Responsible {
 	private Integer number;
 	
 	@NotNull
+	@NotEmpty
+	@Email
 	@Column
 	private String email;
 	

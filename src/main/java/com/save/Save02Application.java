@@ -27,6 +27,7 @@ public class Save02Application extends WebMvcConfigurerAdapter{
 		return slr;
 	}
 	
+	//pour changer la locale en fct parametre URL	
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();

@@ -129,7 +129,7 @@ public class ResponsibleController {
 	}
 	
 	//methode GET pour updater un responsable
-	@RequestMapping(value="{id}/update", method=RequestMethod.GET)
+	@RequestMapping(value="/{id}/update", method=RequestMethod.GET)
 	public String responsibleUpdateGet(@PathVariable Long id, Model model) {
 		log.info("methode GET pour updater un responsable");
 		
@@ -144,7 +144,7 @@ public class ResponsibleController {
 	}
 	
 	//methode POST pour updater un responsable
-	@RequestMapping(value="{id}/update", method=RequestMethod.POST)
+	@RequestMapping(value="/{id}/update", method=RequestMethod.POST)
 	public String responsibleUpdatePost(@PathVariable Long id, @Valid Responsible responsible, BindingResult errors, 
 			Model model, RedirectAttributes rModel) {
 		
@@ -152,7 +152,8 @@ public class ResponsibleController {
 			
 			//gestion de la validation
 			if(errors.hasErrors()) {
-				return "reponsible/"+id+"/update";
+				log.info("erreurs d'encodage du contact");
+				return "responsible/updateResponsible";
 			}else {
 				Responsible responsible_updat = responsibleDAO.save(responsible);
 				rModel.addFlashAttribute(responsible_updat);

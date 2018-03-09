@@ -51,7 +51,17 @@
 				<li><a href="${contextPath}/victim/add"><s:message code="victimEncode"/></a></li>
 				<li><a href="${contextPath}/victim/list"><s:message code="victimListSee"/></a></li>
 				
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"><s:message code="menu.langue" /><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+							<li><a href="?lang=fr">fr</a></li>
+							<li><a href="?lang=en">en</a></li>
+						</ul>
+			</li>
+				
 			</ul>
+			
+			
 			
 			<ul class="nav navbar-nav navbar-right">
 			 <sec:authorize access="isAuthenticated()">
