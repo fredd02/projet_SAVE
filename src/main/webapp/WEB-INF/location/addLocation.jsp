@@ -11,6 +11,16 @@
 <jsp:include page="../fragments/header.jsp">
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
+
+<s:message code="postCode" var="postCode" />
+<s:message code="city" var="city" />
+<s:message code="postCode" var="postCode" />
+<s:message code="street" var="street" />
+<s:message code="number" var="number" />
+
+
+
+
 <div class="container">
 
 
@@ -27,7 +37,7 @@
 			<div class="col-sm-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				<sf:input path="postCode" id="postCode" class="form-control" placeholder="postCode" />
+				<sf:input path="postCode" id="postCode" class="form-control" placeholder="${postCode}" />
 				<sf:errors path="postCode" class="control-label" />
 			</div>
 			</div>
@@ -40,7 +50,7 @@
 			<div class="col-sm-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				<sf:input path="city" id="city" class="form-control" placeholder="city" />
+				<sf:input path="city" id="city" class="form-control" placeholder="${city}" />
 				<sf:errors path="city" class="control-label" />
 			</div>
 			</div>
@@ -53,7 +63,7 @@
 			<div class="col-sm-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				<sf:input path="street" id="street" class="form-control" placeholder="street" />
+				<sf:input path="street" id="street" class="form-control" placeholder="${street}" />
 				<sf:errors path="street" class="control-label" />
 			</div>
 			</div>
@@ -66,7 +76,7 @@
 			<div class="col-sm-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				<sf:input path="number" id="number" class="form-control" placeholder="number" />
+				<sf:input path="number" id="number" class="form-control" placeholder="${number}" />
 				<sf:errors path="number" class="control-label" />
 			</div>
 			</div>
@@ -102,9 +112,11 @@
 	<input type="hidden" name="toMaps" id="maps" value="test">
 	
 	<div class="form-group">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-		<input type="button" class="btn btn-warning" id="button" value="select on maps">
+		<div class="col-md-offset-4 col-md-8">
+			
+		
+			<input type="button" class="btn btn-warning" id="button" value="<s:message code='select.location.map'/>"/>
+			
 		</div>
 	</div>
 	

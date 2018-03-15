@@ -55,8 +55,10 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"><s:message code="menu.langue" /><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-							<li><a href="?lang=fr">fr</a></li>
 							<li><a href="?lang=en">en</a></li>
+							<li><a href="?lang=fr">fr</a></li>
+							<li><a href="?lang=nl">nl</a></li>
+							
 						</ul>
 			</li>
 				

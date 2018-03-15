@@ -24,7 +24,7 @@
 			<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" autofocus/>
+				<sf:input path="firstname" id="firstname" class="form-control" placeholder="firstname" autofocus="autofocus"/>
 				
 			</div>
 			<sf:errors path="firstname" class="control-label" />

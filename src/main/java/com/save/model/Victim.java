@@ -36,7 +36,7 @@ public class Victim {
 	private Long id;
 	
 	
-	//@Size(min=2, max=30, message="{victim.firstname}")
+	
 	@Column
 	private String firstname;
 	

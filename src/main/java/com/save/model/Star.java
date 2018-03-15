@@ -1,5 +1,6 @@
 package com.save.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Temporal;
@@ -10,7 +11,7 @@ import org.joda.time.Years;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class Star {
+public class Star implements Serializable{
 	
 	
 	

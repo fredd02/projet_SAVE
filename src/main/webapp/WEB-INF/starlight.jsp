@@ -29,6 +29,7 @@
 				center: new google.maps.LatLng(50.672750, 5.076440),
 				zoom: 8,
 				mapTypeId: 'roadmap',
+				mapTypeControl: false,
 				styles: nightStyle
 				
 				
@@ -55,34 +56,58 @@
 		
 		var infowindow = new google.maps.InfoWindow();
 		
-		alert("test");
-		alert(${fn:length(stars)});
 		
-		<c:forEach var="star" items="${stars}">
-			var age;
-			switch(star.language){
-			case "DEUTSCH":
-				age = "Jahre alt";
-				break;
-			case "FRANCAIS":
-				age = "ans";
-				break;
-			case "VLAAMS":
-				age = "jaar oud";
-				break;
-			default	
-			}
-		</c:forEach>
+		var stars = ${stars};
 		
-		
-		
-		
-		
-		
+		for(i=0;i < stars.length;i++){
+            
+            var age;
+            switch (stars[i].language){
+                case "DEUTSCH":
+                    age = "Jahre alt";
+                    break;
+                case "FRANCAIS":
+                    age= "ans";
+                    break;
+                case "VLAAMS":
+                    age = "jaar oud";
+                    break;
+                default:
+                    age = "years old";
+                    
+            }
+            
+            if(stars[i].virtualPanel !== 1){
+            var sContent="<h4>" + stars[i].lastname + "</h4>"
+                        +"<p>"+ stars[i].age +" " + age + "</p>";
+            } else {
+                var sContent="<div class='virtual'><i><h4>" + stars[i].lastname + "</h4>"
+                        +"<p>"+ stars[i].age +" " + age + "</p></i></div>";
+                
+            }
+                
+
+             var latLng = new google.maps.LatLng(stars[i].latitude, stars[i].longitude);
+                    var marker = new google.maps.Marker({
+                        position: latLng,
+                        title: stars[i].firstname,
+                        icon:icons.etoile.icon,
+                        content: sContent ,
+                        infoWindow: infowindow,
+                        map:map
+
+                    });
+                    
+            
+            
+            google.maps.event.addListener(marker, 'click',function(){
+                infowindow.close();
+                infowindow.setContent(this.content);
+                infowindow.open(map, this);
+      });   
+    }
 		
 	}
-
-
 
 
 </script>

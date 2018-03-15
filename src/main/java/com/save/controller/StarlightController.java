@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.save.model.Star;
 import com.save.model.Victim;
 import com.save.repository.IVictimRepository;
@@ -41,8 +43,19 @@ public class StarlightController {
 			star_temp = new Star(v);
 			starList.add(new Star(v));
 		}
+		//sousliste avec 6 éléments pour debug. A REMPLACER!!
+		/*List<Star> starDebug = starList.subList(0, 5);*/
 		
-		model.addAttribute("stars",starList );
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String starsToJson = mapper.writeValueAsString(starList);
+			log.info(starsToJson);
+			
+			model.addAttribute("stars",starsToJson);
+		} catch(JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 		return "starlight";
