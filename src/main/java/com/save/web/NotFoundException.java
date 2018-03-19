@@ -3,13 +3,13 @@ package com.save.web;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value=HttpStatus.NOT_FOUND, reason = "Element non trouvé")
+
 public class NotFoundException extends RuntimeException {
 
 	
 	private static final long serialVersionUID = 1L;
 	
-	//identifiant de l'objet recherché
+	//identifiant de l'objet recherchÃ©
 	private Long id;
 	
 	public NotFoundException(String message, Long id) {

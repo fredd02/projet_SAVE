@@ -56,6 +56,15 @@ public class ResponsibleController {
 		
 		log.info("methode get pour ajouter un responsable");
 		
+		//verifie si la victime existe
+		if(!victimDAO.exists(id)) {
+			String message = String.format("la victime %d n'existe pas", id);
+			log.info(message);
+			throw new NotFoundException("la victime n'existe pas", id);
+		}
+		
+		
+		
 		Victim victim = victimDAO.getOne(id);
 		model.addAttribute("victim", victim);
 		
@@ -106,6 +115,11 @@ public class ResponsibleController {
 	@RequestMapping(value="{id}", method=RequestMethod.GET)
 	public String infosResponsable(@PathVariable Long id, Model model) {
 		if(!model.containsAttribute("responsible")) {
+			
+			if(!responsibleDAO.exists(id)) {
+				throw new NotFoundException("le contact n'existe pas",id);
+			}
+			
 			Responsible responsible = responsibleDAO.findOne(id);
 			model.addAttribute("responsible", responsible);
 			
@@ -118,6 +132,9 @@ public class ResponsibleController {
 	@RequestMapping(value="/list/{id}", method=RequestMethod.GET)
 	public String ResponsablesFromVictim(@PathVariable Long id, Model model) {
 		log.info("methode GET pour afficher les responsables d'une victime");
+		
+		if(!victimDAO.exists(id))
+			throw new NotFoundException("la victime n'existe pas", id);
 		//recupere la liste des responsables d'une victime
 		List<Responsible> listResponsibles = responsibleDAO.getResponsiblesFromVictim(id);
 		Victim victim = victimDAO.findOne(id);
@@ -135,7 +152,7 @@ public class ResponsibleController {
 		
 		//verifie si le responsable existe
 		if(!responsibleDAO.exists(id))
-			throw new NotFoundException("responsable non trouv� pour update" , id);
+			throw new NotFoundException("responsable non trouvé pour update" , id);
 		
 		Responsible responsible = responsibleDAO.findOne(id);
 		model.addAttribute("responsible", responsible);

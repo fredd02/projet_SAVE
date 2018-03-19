@@ -11,7 +11,11 @@
 </jsp:include>
 
 <div class="container">
-<h1>Home</h1>
+<div class="jumbotron">
+<h1>PEVR</h1>
+<p>Interface de gestion pour l'association PEVR</p>
+</div>
+
 
 
 

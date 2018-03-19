@@ -34,9 +34,9 @@ public class VictimRepositoryTest {
 	@Test
 	public void whenFindById_thenReturnVictim() {
 		//given
-		Date date1 = new Date(01/01/200);
+		//Date date1 = new Date(01/01/2000);
 		Date date2 = new Date(12/12/2010);
-		Victim victim = new Victim("TEST01","test01",date1,date2,0);
+		Victim victim = new Victim("TEST01","test01",date2,0);
 		entityManager.persist(victim);
 		entityManager.flush();
 		
@@ -55,11 +55,11 @@ public class VictimRepositoryTest {
 	@Test
 	public void getVictimsListAlphaTest() {
 		//given
-		Date date1 = new Date(01/01/200);
+		//Date date1 = new Date(01/01/2000);
 		Date date2 = new Date(12/12/2010);
-		Victim victim1 = new Victim("CCC","test01",date1,date2,0);
-		Victim victim2 = new Victim("AAA","test01",date1,date2,0);
-		Victim victim3 = new Victim("BBB","test01",date1,date2,0);
+		Victim victim1 = new Victim("CCC","test01",date2,0);
+		Victim victim2 = new Victim("AAA","test01",date2,0);
+		Victim victim3 = new Victim("BBB","test01",date2,0);
 		entityManager.persist(victim1);
 		entityManager.persist(victim2);
 		entityManager.persist(victim3);
@@ -80,9 +80,9 @@ public class VictimRepositoryTest {
 	@Test
 	public void saveVictimTest() {
 		//given
-		Date date1 = new Date(01/01/200);
+		//Date date1 = new Date(01/01/2000);
 		Date date2 = new Date(12/12/2010);
-		Victim victim = new Victim("TEST01","test01",date1,date2,0);
+		Victim victim = new Victim("TEST01","test01",date2,0);
 		Victim victim_saved = victimRepository.save(victim);
 		assertEquals(victim,victim_saved);
 		

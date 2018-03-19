@@ -61,6 +61,14 @@ public class LocationController {
 		
 		log.info("methode get pour ajouter une localisation");
 		
+		//verifie si la victime existe
+		if(!victimDAO.exists(id)) {
+			String message = String.format("la victime %d n'existe pas", id);
+			log.info(message);
+			throw new NotFoundException("la victime n'existe pas", id);
+		}
+			
+		
 		//chargement de la localisation relative à la victime
 		Long location_id = locationDAO.GetLocationIdFromVictimId(id);
 		if(location_id!=null) {

@@ -112,6 +112,11 @@ public class VictimController {
 		
 		log.info("methode GET pour afficher les details d'une victime");
 		
+		//verifie si la victime existe
+		if(!victimDAO.exists(id)) {
+			throw new NotFoundException("la victime n'existe pas", id);
+		}
+		
 		//verifie si on ne vient pas d'une redirection
 		if(! model.containsAttribute("victim")) {
 			log.info("recherche de la victime dans la BD");
@@ -134,12 +139,12 @@ public class VictimController {
 		log.info("methode POST pour supprimer une victime");
 		//verifie si la victime existe
 		if(!victimDAO.exists(id)) 
-			throw new NotFoundException("victime non trouv�e pour suppression ",id);
+			throw new NotFoundException("victime non trouvée pour suppression ",id);
 		try {
 			victimDAO.delete(id);
 		} catch (DataIntegrityViolationException e) {
 			log.error("SQL", e);
-			throw new NoAccessException(" Suppression impossible: cette victime poss�de des d�pendances");
+			throw new NoAccessException(" Suppression impossible: cette victime possède des dépendances");
 			
 		}
 		log.info("suppression de la victime: " + id);

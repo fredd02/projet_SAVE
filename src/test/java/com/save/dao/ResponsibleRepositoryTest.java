@@ -38,10 +38,10 @@ public class ResponsibleRepositoryTest {
 	@Test
 	public void getResponsiblesFromVictimTest() {
 		//given
-		Date date1 = new Date(01/01/200);
+		//Date date1 = new Date(01/01/2000);
 		Date date2 = new Date(12/12/2010);
-		Victim victim = new Victim("TEST01","test01",date1,date2,0);
-		Victim victim02 =  new Victim("TEST02", "test02",date1,date2,0);
+		Victim victim = new Victim("TEST01","test01",date2,0);
+		Victim victim02 =  new Victim("TEST02", "test02",date2,0);
 		Responsible contact01 = new Responsible("CONTACT01","contact01",1000, "Bruxelles","rue Haute",1,"contact01@gmail.com","01234");
 		Responsible contact02 = new Responsible("CONTACT02","contact02",1000, "Bruxelles","rue Haute",2,"contact01@gmail.com","01234");
 		Responsible contact03 = new Responsible("CONTACT03","contact03",1000, "Bruxelles","rue Haute",2,"contact01@gmail.com","01234");

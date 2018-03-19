@@ -53,11 +53,6 @@ public class Victim {
 	@Column
 	private Integer month;
 	
-	//@NotNull
-	//@Pattern(regexp="^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message="{date.valid}")
-	@DateTimeFormat(pattern="dd/MM/yyyy")
-	@Column
-	private Date birthdate;
 	
 	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
@@ -89,11 +84,11 @@ public class Victim {
 		
 	}
 
-	public Victim(String firstname, String lastname, Date birthdate, Date accidentdate, Integer sex) {
+	public Victim(String firstname, String lastname, Date accidentdate, Integer sex) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthdate = birthdate;
+		
 		this.accidentdate = accidentdate;
 		this.sex = sex;
 	}
@@ -140,14 +135,7 @@ public class Victim {
 		this.month = month;
 	}
 
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
-
+	
 	public Date getAccidentdate() {
 		return accidentdate;
 	}
