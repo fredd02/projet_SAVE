@@ -1,5 +1,6 @@
 package com.save.controller;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -52,6 +54,9 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private MessageSource messageSource;
+	
 	@RequestMapping(value="registration", method=RequestMethod.GET)
 	public String registration(Model model) {
 		log.info("methode GET pour registration");
@@ -93,31 +98,35 @@ public class UserController {
 		return "home";
 	}
 	
-	//display forgotPassword page
+	//methode GET pour récuperer l'email de l'utilisateur
 	@RequestMapping(value="/forgot", method=RequestMethod.GET)
 	public ModelAndView displayForgotPasswordPage() {
 		return new ModelAndView("forgotPassword");
 	}
 	
-	//process form submission from forgotPassword page
+	//methode POST pour récuperer l'email de l'utilisateur
 	@RequestMapping(value="/forgot", method=RequestMethod.POST)
 	public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail,
-			HttpServletRequest request) {
+			HttpServletRequest request, Locale locale) {
 		log.info("methode POST qui recupère l'adresse mail");
 		
-		//Lookup user in database by email
+		//recherche de l'utilisateur dans la BD
 		Optional<User> optional = userService.findUserByEmail(userEmail);
 		
 		if(!optional.isPresent()) {
-			modelAndView.addObject("errorMessage","We didn't find an account for that email adress");
+			//i18n du message d'erreur
+			String errorMessage = messageSource.getMessage("email.notFound",null, locale);
+			modelAndView.addObject("errorMessage",errorMessage);
 			
 		} else {
-				//generate random 36-characters string token for reset password
+				
+			//génère un token aléatoire de 36 caractères
 			User user = optional.get();
 			user.setResetToken(UUID.randomUUID().toString());
 			
 			userService.save(user);
 			
+			//construit l'url du lien qui sera envoyé
 			String appUrl = request.getScheme() + "://" + request.getServerName() +":"  + request.getLocalPort()
 			+ request.getContextPath();
 			
@@ -131,8 +140,9 @@ public class UserController {
 			
 			emailService.sendEmail(passwordResetEmail);
 			
-			//add success message to view
-			modelAndView.addObject("successMessage", "A password reset link has been sent to " + userEmail);
+			
+			String successMessage = messageSource.getMessage("email.send", null, locale);
+			modelAndView.addObject("successMessage", successMessage +" " + userEmail);
 			
 		}
 		modelAndView.setViewName("forgotPassword");

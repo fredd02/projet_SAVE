@@ -48,10 +48,17 @@
 		<button type="submit" class="btn btn-primary"><s:message code="send" /></button>
 
 	</form>
-	<div class="text-center">
-	<c:out value="${successMessage}" />
-	</div>
+	<c:if test="${not empty successMessage}">
+		<div class="alert alert-success text-center col-sm-offset-4 col-sm-4">
+			<c:out value="${successMessage}" />
+		</div>
+	</c:if>
 	
+	<c:if test="${not empty errorMessage}">
+		<div class="alert alert-danger text-center col-sm-offset-4 col-sm-4">
+			<c:out value="${errorMessage}" />
+		</div>
+	</c:if>
 	
 	</div>
 

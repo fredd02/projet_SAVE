@@ -50,7 +50,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration"><s:message code="account.create" /></a></h4>
+<%--             <h4 class="text-center"><a href="${contextPath}/registration"><s:message code="account.create" /></a></h4> --%>
             <h4 class="text-center"><a href="${contextPath}/forgot"><s:message code="password.forgot" /></a></h4>
         </div>
 

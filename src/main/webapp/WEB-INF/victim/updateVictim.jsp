@@ -137,13 +137,13 @@
 		<s:bind path="virtualPanel">
 		
 			<div class="form-group ${status.error ? 'has-error' : ''}">
-				<sf:label path="virtualPanel" class="col-md-4 form-control-label">
+				<sf:label path="virtualPanel" class="col-md-4 control-label">
 					${virtualPanel}
 					
 				</sf:label>
-				
+				<div class="col-md-4">
 				<sf:checkbox path="virtualPanel" value="1" class="form-check-input" />
-				
+				</div>
 					
 					<sf:errors path="virtualPanel" class="control-label" />
 				
