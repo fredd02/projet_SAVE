@@ -43,9 +43,28 @@ dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.10.RELEASE'
 	
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.10.RELEASE'
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.10.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.freemarker/freemarker
+	compile group: 'org.freemarker', name: 'freemarker', version: '2.3.23'
+	
+	// https://mvnrepository.com/artifact/log4j/log4j
+	compile group: 'log4j', name: 'log4j', version: '1.2.17'
+	
+	//module javax.mail à exclure car inclu dans la librairie de Tomcat
+	compile('org.springframework.boot:spring-boot-starter-mail:1.5.10.RELEASE') {
+	exclude module: 'javax.mail' }
+	
+	// https://mvnrepository.com/artifact/javax.mail/javax.mail-api
+	compileOnly group: 'javax.mail', name: 'javax.mail-api', version: '1.5.6'
+	
 	// https://mvnrepository.com/artifact/javax.activation/activation
-	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+	compileOnly group: 'javax.activation', name: 'activation', version: '1.1.1'
+	
+	
+	
+	
+	
 	runtime('org.postgresql:postgresql')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

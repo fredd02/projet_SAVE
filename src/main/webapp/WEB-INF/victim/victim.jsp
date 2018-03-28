@@ -27,8 +27,12 @@
   <li class="list-group-item"><b><s:message code="AccidentDate"/>: </b><fmt:formatDate pattern="dd/MM/yyyy" value="${victim.accidentdate}"/></li>
   <li class="list-group-item"><b><s:message code="sex"/>: </b><c:out value="${victim.sex == 0 ? male : victim.sex ==1 ? female : ''}" /></li>
   <li class="list-group-item"><b><s:message code="language"/>: </b><c:out value="${victim.language}" /></li>
-  <li class="list-group-item"><b><s:message code="virtual.panel"/>: </b><c:out value="${victim.virtualPanel == 1 ? yes : no}" /></li>
+  <li class="list-group-item "><b><s:message code="virtual.panel"/>: </b><c:out value="${victim.virtualPanel == 1 ? yes : no}" /></li>
+  <li class="list-group-item text-center">
+  	<button type="button" class="btn btn-primary" onclick="location.href='../victim/${victim.id}/update'"><s:message code="updateVictim"/></button>
+  </li>
   <li class="list-group-item text-center"> <div class="btn-group">
+  	
    <c:choose>
    	   <c:when test="${empty victim.responsibles}">
  		<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${victim.id}/add'"><s:message code="addResponsible"/></button>

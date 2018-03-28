@@ -84,6 +84,7 @@ public class VictimController {
 		
 		//gestion de la validation
 				if(errors.hasErrors()) {
+					log.info("errors: " + errors.toString());
 					return "victim/addVictim";
 				}else {
 					

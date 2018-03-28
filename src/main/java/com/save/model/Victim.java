@@ -47,6 +47,7 @@ public class Victim {
 	
 	@Min(value=0, message="{victim.age}")
 	@Max(value=99, message="{victim.age}")
+	//@Pattern(regexp="[0-9]{1,2}", message="{victim.age}")
 	@Column
 	private Integer age;
 	

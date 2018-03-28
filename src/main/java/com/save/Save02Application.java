@@ -14,7 +14,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
-@PropertySources({@PropertySource(value= {"classpath:internal.properties"}),@PropertySource(value= {"file:${catalina.home}/webapps/config/save.properties"}, ignoreResourceNotFound=true)})
+//@PropertySources({@PropertySource(value= {"classpath:internal.properties"}),@PropertySource(value= {"file:${catalina.home}/webapps/config/save.properties"}, ignoreResourceNotFound=true)})
 public class Save02Application extends WebMvcConfigurerAdapter{
 	
 	
