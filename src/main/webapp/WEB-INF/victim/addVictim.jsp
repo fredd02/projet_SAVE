@@ -182,4 +182,11 @@
 </div>
 
 <jsp:include page="../fragments/footer.jsp" />
+<script>
+	$(function(){
+		$("#accidentdate").datepicker(
+				{dateFormat: "dd/mm/yy"});
+	});
+
+</script>
 </html>

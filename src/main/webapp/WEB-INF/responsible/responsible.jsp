@@ -24,6 +24,9 @@
   <li class="list-group-item"><b><s:message code="mail" />: </b><c:out value="${responsible.email}" /></li>
   <li class="list-group-item"><b><s:message code="phone" />: </b><c:out value="${responsible.phone}" /></li>
   <li class="list-group-item"><b><s:message code="victimConnection" />: </b><c:out value="${responsible.connection}" /></li>
+  <li class="list-group-item text-center">
+  	<button type="button" class="btn btn-primary" onclick="location.href='../responsible/${responsible.id}/update'"><s:message code="updateResponsible"/></button>
+  </li>
  
 </ul>
 

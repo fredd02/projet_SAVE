@@ -79,12 +79,14 @@
             
             if(stars[i].virtualPanel !== 1){
             var sContent="<h4>" + stars[i].lastname + "</h4>"
-                        +"<p>"+ stars[i].age +" " + age + "</p>";
+                        + (stars[i].age != null ? "<p>"+ stars[i].age +" " + age + "</p>" : "");
             } else {
                 var sContent="<div class='virtual'><i><h4>" + stars[i].lastname + "</h4>"
-                        +"<p>"+ stars[i].age +" " + age + "</p></i></div>";
+                        + (stars[i].age != null ? "<p>"+ stars[i].age +" " + age + "</p></i></div>" : "") ;
                 
             }
+            
+
                 
 
              var latLng = new google.maps.LatLng(stars[i].latitude, stars[i].longitude);

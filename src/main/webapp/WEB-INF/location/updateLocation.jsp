@@ -11,6 +11,17 @@
 <jsp:include page="../fragments/header.jsp">
 	<jsp:param name="titre" value="SAVE" />
 </jsp:include>
+
+<s:message code="postCode" var="postCode" />
+<s:message code="city" var="city" />
+<s:message code="postCode" var="postCode" />
+<s:message code="street" var="street" />
+<s:message code="number" var="number" />
+
+
+
+
+
 <div class="container">
 <h2><s:message code="modify.location" /> <c:out value="${victim.firstname} ${victim.lastname}" /></h2>
 
@@ -25,9 +36,9 @@
 	
 	<s:bind path="postCode">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="postCode" class="col-sm-2 control-label">postCode</sf:label>
+			<sf:label path="postCode" class="col-sm-2 control-label"><s:message code="postCode"/></sf:label>
 			<div class="col-sm-10">
-				<sf:input path="postCode" id="postCode" class="form-control" placeholder="postCode" />
+				<sf:input path="postCode" id="postCode" class="form-control" placeholder="${postCode}" />
 				<sf:errors path="postCode" class="control-label" />
 			</div>
 			</div>
@@ -35,9 +46,9 @@
 	
 	<s:bind path="city">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="city" class="col-sm-2 control-label">city</sf:label>
+			<sf:label path="city" class="col-sm-2 control-label"><s:message code="city"/></sf:label>
 			<div class="col-sm-10">
-				<sf:input path="city" id="city" class="form-control" placeholder="city" />
+				<sf:input path="city" id="city" class="form-control" placeholder="${city}" />
 				<sf:errors path="city" class="control-label" />
 			</div>
 			</div>
@@ -45,9 +56,9 @@
 	
 	<s:bind path="street">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="street" class="col-sm-2 control-label">street</sf:label>
+			<sf:label path="street" class="col-sm-2 control-label"><s:message code="street"/></sf:label>
 			<div class="col-sm-10">
-				<sf:input path="street" id="street" class="form-control" placeholder="street" />
+				<sf:input path="street" id="street" class="form-control" placeholder="${street}" />
 				<sf:errors path="street" class="control-label" />
 			</div>
 			</div>
@@ -55,9 +66,9 @@
 	
 	<s:bind path="number">
 		<div class="form-group ${status.error ? has-error : ''}">
-			<sf:label path="number" class="col-sm-2 control-label">number</sf:label>
+			<sf:label path="number" class="col-sm-2 control-label"><s:message code="number"/></sf:label>
 			<div class="col-sm-10">
-				<sf:input path="number" id="number" class="form-control" placeholder="number" />
+				<sf:input path="number" id="number" class="form-control" placeholder="${number}" />
 				<sf:errors path="number" class="control-label" />
 			</div>
 			</div>
@@ -88,7 +99,7 @@
 	<div class="form-group">
 		<div class="col-sm-2"></div>
 		<div class="col-sm-10">
-		<input type="button" class="btn btn-warning" id="button" value="select on maps">
+		<input type="button" class="btn btn-warning" id="button" value="<s:message code='select.location.map'/>">
 		</div>
 	</div>
 	

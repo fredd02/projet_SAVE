@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="${bootstrapCss}" />
 <link rel="stylesheet" href="${styleCss}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <%-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>  --%>
 <script src="../resources/js/moment.js"></script>
 <script src="../resources/js/jquery.dataTables.min.js"></script>
@@ -30,6 +31,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.bootstrap.min.css"/>
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <s:url value="/login" var="loginUrl" />
 <s:url value="/logout" var="logoutUrl" />
