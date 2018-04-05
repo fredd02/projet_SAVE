@@ -35,8 +35,7 @@ public class Victim {
 	@SequenceGenerator(name="victim_generator", sequenceName="victim_seq", allocationSize=1)
 	private Long id;
 	
-	
-	
+		
 	@Column
 	private String firstname;
 	
@@ -47,7 +46,6 @@ public class Victim {
 	
 	@Min(value=0, message="{victim.age}")
 	@Max(value=99, message="{victim.age}")
-	//@Pattern(regexp="[0-9]{1,2}", message="{victim.age}")
 	@Column
 	private Integer age;
 	
