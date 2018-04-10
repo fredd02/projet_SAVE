@@ -37,6 +37,7 @@ public class Victim {
 	
 		
 	@Column
+	@Size(min=2, max=30, message="{victim.firstname}")
 	private String firstname;
 	
 	@NotEmpty

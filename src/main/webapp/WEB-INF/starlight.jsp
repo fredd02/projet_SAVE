@@ -83,12 +83,8 @@
             } else {
                 var sContent="<div class='virtual'><i><h4>" + stars[i].lastname + "</h4>"
                         + (stars[i].age != null ? "<p>"+ stars[i].age +" " + age + "</p></i></div>" : "") ;
-                
             }
             
-
-                
-
              var latLng = new google.maps.LatLng(stars[i].latitude, stars[i].longitude);
                     var marker = new google.maps.Marker({
                         position: latLng,
@@ -99,9 +95,7 @@
                         map:map
 
                     });
-                    
-            
-            
+                   
             google.maps.event.addListener(marker, 'click',function(){
                 infowindow.close();
                 infowindow.setContent(this.content);

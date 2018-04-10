@@ -106,7 +106,7 @@ public class UserController {
 	
 	//methode POST pour récuperer l'email de l'utilisateur
 	@RequestMapping(value="/forgot", method=RequestMethod.POST)
-	public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail,
+	public ModelAndView passwordForgotPost(ModelAndView modelAndView, @RequestParam("email") String userEmail,
 			HttpServletRequest request, Locale locale) {
 		log.info("methode POST qui recupère l'adresse mail");
 		
@@ -134,12 +134,11 @@ public class UserController {
 			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
 			passwordResetEmail.setFrom("support@save.com");
 			passwordResetEmail.setTo(user.getEmail());
-			passwordResetEmail.setSubject("Password Reset Request");
-			passwordResetEmail.setText("To reset your password, click the link below:\n" + appUrl
+			passwordResetEmail.setSubject("Demande de réinitialisation du mot de passe");
+			passwordResetEmail.setText("Pour réinitialiser votre mot de passe, cliquez sur le lien suivant:\n" + appUrl
 					+ "/reset?token=" + user.getResetToken());
 			
 			emailService.sendEmail(passwordResetEmail);
-			
 			
 			String successMessage = messageSource.getMessage("email.send", null, locale);
 			modelAndView.addObject("successMessage", successMessage +" " + userEmail);
@@ -168,7 +167,7 @@ public class UserController {
 	
 	//Process reset password form
 	@RequestMapping(value="/reset", method=RequestMethod.POST)
-	public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams,
+	public ModelAndView newPasswordPost(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams,
 			 RedirectAttributes redir) {
 		
 		
@@ -183,14 +182,14 @@ public class UserController {
 			
 			userService.save(resetUser);
 			
-			redir.addFlashAttribute("successMessage","You have succesfully reset your password. You may now login");
+			redir.addFlashAttribute("successMessage","Mot de passe réinitialisé. Vous pouvez vous loguer");
 			
 			modelAndView.setViewName("redirect:login");
 			return modelAndView;
 			
 			
 		} else {
-			modelAndView.addObject("errorMessage", "This is an invalid password reset link");
+			modelAndView.addObject("errorMessage", "Le lien est invalide");
 			modelAndView.setViewName("resetPassword");
 		}
 		return modelAndView;

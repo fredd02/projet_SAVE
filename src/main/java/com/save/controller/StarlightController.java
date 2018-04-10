@@ -35,16 +35,12 @@ public class StarlightController {
 		log.info("methode GET pour afficher la carte étoilée");
 		//Liste avec prenom et age des victimes
 		List<Victim> list = victimDAO.getVictimsWithLatLong();
-		log.info(list.get(0).getLastname());
 		List<Star> starList = new ArrayList<>();
-		Star star_temp;
-		
+				
 		for(Victim v: list	) {
-			star_temp = new Star(v);
+			
 			starList.add(new Star(v));
 		}
-		//sousliste avec 6 éléments pour debug. A REMPLACER!!
-		/*List<Star> starDebug = starList.subList(0, 5);*/
 		
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -55,8 +51,6 @@ public class StarlightController {
 		} catch(JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		
-		
 		
 		return "starlight";
 	}

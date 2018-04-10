@@ -7,10 +7,13 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +36,16 @@ public class VictimController {
 	
 	@Autowired
 	IVictimRepository victimDAO;
+	
+	
+	
+	//afin que les strings vides soient interprétés comme null
+	@InitBinder
+	public void allowEmptyDateBinding( WebDataBinder binder )
+	{
+	    binder.registerCustomEditor( String.class, new StringTrimmerEditor( true ));
+	   
+	}
 	
 	
 	/**
@@ -75,10 +88,21 @@ public class VictimController {
 	}
 	
 	
-	//methode POST pour encoder une victime
+	/**
+	 * methode POST pour encoder une victime
+	 * 
+	 * @param victim
+	 * 		victime à encoder
+	 * @param errors
+	 * 		erreurs éventuelles dans le formulaire
+	 * @param rModel
+	 * 		sauvegarde les données pour la redirection
+	 * @return
+	 * 		redirige sur l'url permettant de voir les informations de la victime
+	 */
 	
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public String victimAddPost(@Valid Victim victim, BindingResult errors, Model model, RedirectAttributes rModel) {
+	public String victimAddPost(@Valid Victim victim, BindingResult errors, RedirectAttributes rModel) {
 		
 		log.info("methode POST pour encoder une victime");
 		
@@ -98,6 +122,8 @@ public class VictimController {
 				}
 		
 	}
+	
+	
 	/**
 	 * methode GET pour afficher les infos d'une victime
 	 * @param id
